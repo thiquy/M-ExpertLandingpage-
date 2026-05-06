@@ -1,0 +1,375 @@
+/* 
+ * ROLAI DESIGN SYSTEM (Clean CSS)
+ * =========================================================================
+ * Đây là toàn bộ CSS được dịch ngược và viết lại từ mã nguồn Framer của Rolai.com.
+ * Được viết theo chuẩn BEM và Module để dễ dàng tái sử dụng cho bất kỳ phần tử nào.
+ * 
+ * Mục lục:
+ * 1. Design Tokens (Biến màu sắc, shadow, font)
+ * 2. Reset & Typography (Chữ viết cơ bản)
+ * 3. Layouts (Lưới, Container)
+ * 4. UI Components: Buttons (Nút bấm)
+ * 5. UI Components: Badges & Tags (Nhãn dán)
+ * 6. UI Components: Cards & Glassmorphism (Thẻ thông tin)
+ * 7. UI Components: Depth Containers (Khối 3D xếp lớp)
+ * 8. UI Components: Navbar & Footer (Điều hướng & Chân trang)
+ * =========================================================================
+ */
+
+/* =========================================
+   1. DESIGN TOKENS (VARIABLES)
+   ========================================= */
+:root {
+    /* --- Bảng màu (Colors) --- */
+    --rolai-blue-primary: #2e5bff;    /* Màu xanh chủ đạo */
+    --rolai-blue-light: #6f9aff;      /* Màu xanh nhạt (dùng cho hover/gradient) */
+    --rolai-blue-bg: #e9f0ff;         /* Màu nền xanh cực nhạt cho icon box */
+    
+    --rolai-bg-main: #f8f8f8;         /* Màu nền tổng thể website */
+    --rolai-bg-card: #ffffff;         /* Màu nền cho các thẻ (Cards) */
+    --rolai-bg-alt: #efefef;          /* Màu nền thay thế (dành cho container nổi bật) */
+    
+    --rolai-text-headline: rgba(0, 0, 0, 0.9); /* Màu chữ tiêu đề (Gần đen) */
+    --rolai-text-body: #505157;                /* Màu chữ nội dung (Xám đậm) */
+    --rolai-text-inverse: #ffffff;             /* Màu chữ trên nền tối */
+
+    /* --- Đổ bóng (Shadows) --- */
+    /* Soft Shadow: Dùng cho Card thông thường tạo cảm giác nổi nhẹ */
+    --rolai-shadow-soft: 
+        0.18px 0.6px 2.39px -1px rgba(0,0,0,0.1), 
+        0.69px 2.29px 9.08px -2px rgba(0,0,0,0.08), 
+        3px 10px 39.67px -3px rgba(0,0,0,0.05);
+        
+    /* Heavy Shadow: Dùng cho Card khi Hover hoặc khối cần nổi bật hẳn */
+    --rolai-shadow-heavy: 
+        0.5px 1px 4px -1px rgba(0,0,0,0.15), 
+        2px 4px 16px -2px rgba(0,0,0,0.12), 
+        6px 15px 50px -3px rgba(0,0,0,0.1);
+        
+    /* Glass Shadow: Viền phát sáng bên trong cho các icon nhỏ */
+    --rolai-shadow-glass-inset: inset 0 1px 4px rgba(255,255,255,0.8), 0 2px 6px rgba(46, 91, 255, 0.2);
+    
+    /* Glow Shadow: Đổ bóng màu xanh xung quanh nút bấm Primary */
+    --rolai-shadow-glow: 0 4px 20px rgba(46, 91, 255, 0.35);
+
+    /* --- Bo góc (Border Radius) --- */
+    --rolai-radius-sm: 12px;     /* Cho Icon, Badge */
+    --rolai-radius-md: 20px;     /* Cho Card thông thường */
+    --rolai-radius-lg: 30px;     /* Cho Container lớn (Depth container) */
+    --rolai-radius-pill: 1000px; /* Cho Nút bấm (Pill shape) */
+
+    /* --- Phông chữ (Typography) --- */
+    --rolai-font-family: 'Inter', sans-serif;
+    --rolai-transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1); /* Hiệu ứng mượt của Framer */
+}
+
+/* =========================================
+   2. GLOBAL RESET & TYPOGRAPHY
+   ========================================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--rolai-font-family);
+    background-color: var(--rolai-bg-main);
+    color: var(--rolai-text-body);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--rolai-text-headline);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em; /* Khoảng cách chữ sít lại tạo cảm giác hiện đại */
+    margin-top: 0;
+}
+
+.rolai-h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 24px; }
+.rolai-h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 20px; }
+.rolai-h3 { font-size: clamp(1.25rem, 2vw, 1.75rem); margin-bottom: 16px; }
+
+/* Eyebrow: Dòng text nhỏ phía trên tiêu đề (vd: "FEATURES") */
+.rolai-eyebrow {
+    display: inline-block;
+    color: var(--rolai-blue-primary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+}
+
+.rolai-text-lead {
+    font-size: 1.15rem;
+    color: var(--rolai-text-body);
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =========================================
+   3. LAYOUTS
+   ========================================= */
+.rolai-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.rolai-section {
+    padding: 100px 0;
+}
+
+.rolai-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+.rolai-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+
+@media (max-width: 768px) {
+    .rolai-grid-2, .rolai-grid-3 { grid-template-columns: 1fr; }
+    .rolai-section { padding: 60px 0; }
+}
+
+/* =========================================
+   4. BUTTONS (Nút bấm - Chuẩn Rolai)
+   ========================================= */
+.rolai-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    border-radius: var(--rolai-radius-pill);
+    font-family: var(--rolai-font-family);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: var(--rolai-transition);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Nút chính (Gradient xanh, bóng đổ kép chuẩn Rolai) */
+.rolai-btn-primary {
+    background: linear-gradient(180deg, #547eff 0%, var(--rolai-blue-primary) 100%);
+    color: var(--rolai-text-inverse);
+    /* Inset shadow tạo viền nổi 3D, drop shadow tạo ánh sáng xanh */
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 8px 24px rgba(46, 91, 255, 0.35);
+    border: 1px solid transparent;
+}
+.rolai-btn-primary:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(180deg, #6a8fff 0%, #3e68ff 100%);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5), 0 12px 30px rgba(46, 91, 255, 0.45);
+}
+
+/* Nút phụ (Glassmorphism nền trong suốt viền trắng) */
+.rolai-btn-secondary {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    color: var(--rolai-text-headline);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+.rolai-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================================
+   5. BADGES & TAGS
+   ========================================= */
+.rolai-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: var(--rolai-radius-pill);
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: #ffffff;
+    box-shadow: var(--rolai-shadow-soft);
+    color: var(--rolai-text-headline);
+    gap: 8px;
+}
+.rolai-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--rolai-blue-primary);
+}
+
+/* =========================================
+   6. CARDS & GLASSMORPHISM (Thẻ & Hiệu ứng kính)
+   ========================================= */
+/* Thẻ Card tiêu chuẩn */
+.rolai-card {
+    background-color: var(--rolai-bg-card);
+    border-radius: var(--rolai-radius-md);
+    padding: 40px;
+    box-shadow: var(--rolai-shadow-soft);
+    transition: var(--rolai-transition);
+    height: 100%;
+}
+.rolai-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--rolai-shadow-heavy);
+}
+
+/* Hiệu ứng Icon Box bên trong thẻ (Glass Inset) */
+.rolai-icon-box {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--rolai-radius-sm);
+    background-color: var(--rolai-blue-bg);
+    color: var(--rolai-blue-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: var(--rolai-shadow-glass-inset);
+    margin-bottom: 24px;
+}
+
+/* Thẻ kính mờ (Backdrop filter) */
+.rolai-glass-card {
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--rolai-radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: var(--rolai-shadow-soft);
+}
+
+/* =========================================
+   7. DEPTH CONTAINERS (Khối 3D xếp lớp)
+   ========================================= */
+/* Container chính chứa các lớp */
+.rolai-depth-wrapper {
+    position: relative;
+    padding: 80px 40px;
+    margin: 60px 0;
+    border-radius: var(--rolai-radius-lg);
+    background-color: var(--rolai-bg-alt);
+    z-index: 1;
+}
+
+/* Lớp 3D số 1 (Nằm dưới container chính) */
+.rolai-depth-layer-1 {
+    position: absolute;
+    top: 20px;
+    left: -20px;
+    right: 20px;
+    bottom: -20px;
+    border-radius: var(--rolai-radius-lg);
+    background-color: rgba(46, 91, 255, 0.04);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Lớp 3D số 2 (Nằm dưới cùng) */
+.rolai-depth-layer-2 {
+    position: absolute;
+    top: 40px;
+    left: -40px;
+    right: 40px;
+    bottom: -40px;
+    border-radius: var(--rolai-radius-lg);
+    background-color: rgba(46, 91, 255, 0.02);
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* =========================================
+   8. NAVBAR & FOOTER
+   ========================================= */
+/* Navbar kính mờ */
+.rolai-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    padding: 16px 0;
+    background-color: rgba(248, 248, 248, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.03);
+}
+
+.rolai-nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rolai-nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.rolai-nav-links a {
+    color: var(--rolai-text-body);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--rolai-transition);
+}
+
+.rolai-nav-links a:hover {
+    color: var(--rolai-blue-primary);
+}
+
+/* Chân trang (Footer) */
+.rolai-footer {
+    background-color: #ffffff;
+    padding: 80px 0 40px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.rolai-footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.rolai-footer-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--rolai-text-headline);
+    margin-bottom: 24px;
+}
+
+.rolai-footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.rolai-footer-list li {
+    margin-bottom: 12px;
+}
+
+.rolai-footer-list a {
+    color: var(--rolai-text-body);
+    transition: var(--rolai-transition);
+}
+
+.rolai-footer-list a:hover {
+    color: var(--rolai-blue-primary);
+}
+
+.rolai-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 32px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    font-size: 0.85rem;
+}
