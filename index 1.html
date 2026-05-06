@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M-Expert | ASEAN Business</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="rolai-framework.css">
+    <style>
+        /* Specific adjustments not in the general framework */
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--rolai-text-headline); display: flex; align-items: center; gap: 8px; }
+        .logo i { color: var(--rolai-blue-primary); }
+        .hero-section { padding: 180px 0 60px; text-align: center; position: relative; overflow: hidden; }
+        .hero-bg-accent { position: absolute; top: -20%; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(46,91,255,0.08) 0%, rgba(248,248,248,0) 70%); z-index: -1; }
+        .text-primary { color: var(--rolai-blue-primary); }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .hero-cta-group { display: flex; gap: 16px; justify-content: center; }
+
+        /* Marquee Pill Design */
+        .social-proof { padding: 80px 0; text-align: center; }
+        
+        .logo-marquee-pill {
+            background: #eef2ff;
+            border-radius: 1000px;
+            box-shadow: inset 0 2px 10px rgba(255,255,255,0.7), 0 10px 40px rgba(46, 91, 255, 0.08);
+            border: 1px solid #c8d8ff;
+            padding: 24px;
+            overflow: hidden;
+            position: relative;
+            max-width: 900px;
+            height: 160px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-marquee-pill::before,
+        .logo-marquee-pill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 150px;
+            height: 100%;
+            z-index: 6; /* above bubbles but below center ring if needed */
+            pointer-events: none;
+        }
+        .logo-marquee-pill::before { left: 0; background: linear-gradient(to right, #eef2ff, transparent); }
+        .logo-marquee-pill::after { right: 0; background: linear-gradient(to left, #eef2ff, transparent); }
+        
+        .pill-dash-top, .pill-dash-bottom {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 4px;
+            background-color: var(--rolai-blue-primary);
+            border-radius: 4px;
+            z-index: 10;
+        }
+        .pill-dash-top { top: 0; border-top-left-radius: 0; border-top-right-radius: 0; }
+        .pill-dash-bottom { bottom: 0; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+        
+        .marquee-track {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-bubble {
+            position: absolute;
+            top: 50%;
+            margin-top: -36px;
+            margin-left: -36px;
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: #ffffff;
+            box-shadow: var(--rolai-shadow-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px;
+            z-index: 5;
+            animation: slideRightScale 15s linear infinite;
+        }
+        .logo-bubble img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        
+        @keyframes slideRightScale {
+            0% { left: -10%; transform: scale(0.8); opacity: 0; }
+            10% { left: 2%; transform: scale(0.8); opacity: 1; }
+            40% { left: 38%; transform: scale(0.8); }
+            45% { left: 44%; transform: scale(1.1); }
+            50% { left: 50%; transform: scale(1.55); box-shadow: 0 4px 20px rgba(46,91,255,0.3); }
+            55% { left: 56%; transform: scale(1.1); }
+            60% { left: 62%; transform: scale(0.8); box-shadow: var(--rolai-shadow-soft); }
+            90% { left: 98%; transform: scale(0.8); opacity: 1; }
+            100% { left: 110%; transform: scale(0.8); opacity: 0; }
+        }
+
+        .item-1 { animation-delay: 0s; }
+        .item-2 { animation-delay: -3.75s; }
+        .item-3 { animation-delay: -7.5s; }
+        .item-4 { animation-delay: -11.25s; }
+        
+        /* Central Crescent Ring */
+        .logo-center-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 112px; /* Same size as scaled bubble */
+            height: 112px;
+            border-radius: 50%;
+            background: transparent;
+            /* Inset shadow draws the crescent ON TOP of the white bubble, outer shadow is glow */
+            box-shadow: inset 18px 0 0px 0px var(--rolai-blue-primary), -10px 0 24px 6px rgba(46, 91, 255, 0.4);
+            z-index: 10;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation (Minimalist) -->
+    <nav class="rolai-navbar">
+        <div class="rolai-container rolai-nav-inner">
+            <div class="logo">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>M-Expert</span>
+            </div>
+            <div class="rolai-nav-links">
+                <a href="#why">Why M-Expert</a>
+                <a href="#taas">TaaS Model</a>
+                <a href="#success">Success Stories</a>
+            </div>
+            <div style="display: flex; gap: 24px; align-items: center;">
+                <a href="#login" style="color: var(--rolai-text-headline); font-weight: 600; text-decoration: none;">Log In</a>
+                <a href="#cta" class="rolai-btn rolai-btn-primary">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ATTENTION: Hero Flow & Above the Fold -->
+    <section class="hero-section">
+        <div class="hero-bg-accent"></div>
+        <div class="rolai-container">
+            <h1 class="rolai-h1">ASEAN Business, Now Powered by <span class="text-primary">"Trust as a Service"</span></h1>
+            <p class="rolai-text-lead" style="margin-bottom: 40px;">
+                Beyond buyer matching or exhibitions, our ASEAN universities and experts implement your technology directly on-site.
+            </p>
+            
+            <div class="hero-cta-group">
+                <a href="#cta" class="rolai-btn rolai-btn-primary">Request Consultation</a>
+                <a href="#why" class="rolai-btn rolai-btn-secondary">Learn More</a>
+            </div>
+        </div>
+        
+
+    </section>
+
+    <!-- INTEREST: Why M-Expert -->
+    <style>
+        .why-bg-lines {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .why-bg-lines svg {
+            width: 100%; height: 100%;
+            opacity: 0.8;
+        }
+    </style>
+    <section id="why" class="rolai-section" style="position: relative; overflow: hidden; background-color: #ffffff;">
+        <div class="why-bg-lines">
+            <svg viewBox="0 0 1000 600" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Extremely faint micro-dot grid for depth -->
+                <defs>
+                    <pattern id="dotGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <circle cx="2" cy="2" r="1.5" fill="rgba(46,91,255,0.03)" />
+                    </pattern>
+                    <!-- Soft glow for nodes -->
+                    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feGaussianBlur stdDeviation="2" result="blur" />
+                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                    </filter>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#dotGrid)" />
+
+                <!-- Abstract graceful bezier curves (Fiber optics / Neural path) -->
+                <g fill="none" stroke="rgba(46,91,255,0.05)" stroke-width="1">
+                    <path id="path1" d="M-100,500 C 200,450 300,100 800,200 S 1100,400 1200,300" />
+                    <path id="path2" d="M-50,400 C 300,550 500,50 900,150 S 1100,200 1200,100" stroke-width="0.5" />
+                    <path id="path3" d="M-100,200 C 150,150 450,450 850,350 S 1050,500 1200,450" />
+                    <path id="path4" d="M200,650 C 300,400 600,300 700,-50" stroke-width="0.5" />
+                </g>
+
+                <!-- Moving data particles on paths -->
+                <g fill="rgba(46,91,255,0.6)" filter="url(#glow)">
+                    <circle r="2.5">
+                        <animateMotion dur="15s" repeatCount="indefinite">
+                            <mpath href="#path1"/>
+                        </animateMotion>
+                    </circle>
+                    <circle r="1.5">
+                        <animateMotion dur="12s" begin="4s" repeatCount="indefinite">
+                            <mpath href="#path1"/>
+                        </animateMotion>
+                    </circle>
+                    
+                    <circle r="2">
+                        <animateMotion dur="20s" repeatCount="indefinite">
+                            <mpath href="#path2"/>
+                        </animateMotion>
+                    </circle>
+                    <circle r="1.5">
+                        <animateMotion dur="18s" begin="8s" repeatCount="indefinite">
+                            <mpath href="#path3"/>
+                        </animateMotion>
+                    </circle>
+
+                    <circle r="2">
+                        <animateMotion dur="14s" begin="2s" repeatCount="indefinite">
+                            <mpath href="#path4"/>
+                        </animateMotion>
+                    </circle>
+                </g>
+            </svg>
+        </div>
+        <div class="rolai-container" style="position: relative; z-index: 1;">
+            <div class="section-header">
+                <span class="rolai-eyebrow">The Challenge</span>
+                <h2 class="rolai-h2">Why Traditional Expansion <span class="text-primary">Fails</span></h2>
+            </div>
+            
+            <div class="rolai-grid-2" style="align-items: center;">
+                <div class="why-image-wrapper" style="display: flex; justify-content: center; align-items: center; position: relative;">
+                    <!-- Abstract glowing blob behind image -->
+                    <div style="position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(46,91,255,0.08) 0%, rgba(255,255,255,0) 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: -1;"></div>
+                    
+                    <img src="Media/Business man.png" alt="Business Expansion Challenge" style="width: 100%; max-width: 650px; height: auto; object-fit: contain; mix-blend-mode: multiply; transform: scale(1.1);">
+                </div>
+                
+                <div style="display: flex; flex-direction: column; gap: 24px;">
+                    <div class="rolai-card rolai-glass-card" style="padding: 32px; display: flex; align-items: flex-start; gap: 20px; background-color: rgba(255,255,255,0.85);">
+                        <div class="rolai-icon-box" style="margin-bottom: 0; flex-shrink: 0; width: 56px; height: 56px; font-size: 24px;"><i class="fa-solid fa-handshake-slash"></i></div>
+                        <div>
+                            <h3 class="rolai-h3" style="font-size: 1.25rem; margin-bottom: 8px;">Trust Comes First</h3>
+                            <p style="margin: 0; font-size: 0.95rem; line-height: 1.5;">ASEAN buyers do not buy technology first—they buy trust. Industrial buyers require relationship credibility and implementation confidence before adoption.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rolai-card rolai-glass-card" style="padding: 32px; display: flex; align-items: flex-start; gap: 20px; background-color: rgba(255,255,255,0.85);">
+                        <div class="rolai-icon-box" style="margin-bottom: 0; flex-shrink: 0; width: 56px; height: 56px; font-size: 24px;"><i class="fa-solid fa-cloud-sun-rain"></i></div>
+                        <div>
+                            <h3 class="rolai-h3" style="font-size: 1.25rem; margin-bottom: 8px;">Local Validation</h3>
+                            <p style="margin: 0; font-size: 0.95rem; line-height: 1.5;">Solutions proven globally often require adaptation for ASEAN’s unique climate, infrastructure, regulations, and user behavior.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="rolai-card rolai-glass-card" style="padding: 32px; display: flex; align-items: flex-start; gap: 20px; background-color: rgba(255,255,255,0.85);">
+                        <div class="rolai-icon-box" style="margin-bottom: 0; flex-shrink: 0; width: 56px; height: 56px; font-size: 24px;"><i class="fa-solid fa-network-wired"></i></div>
+                        <div>
+                            <h3 class="rolai-h3" style="font-size: 1.25rem; margin-bottom: 8px;">Execution Gap</h3>
+                            <p style="margin: 0; font-size: 0.95rem; line-height: 1.5;">Traditional distributors can sell products, but rarely execute complex technical validation and on-site implementation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESIRE: TaaS Model & Multi-layered Depth -->
+    <section id="taas" class="rolai-section">
+        <div class="rolai-container">
+            <div class="rolai-depth-wrapper">
+                <div class="rolai-depth-layer-1"></div>
+                <div class="rolai-depth-layer-2"></div>
+                
+                <div class="section-header">
+                    <span class="rolai-eyebrow">Our Solution</span>
+                    <h2 class="rolai-h2">The <span class="text-primary">TaaS</span> Execution Engine</h2>
+                    <p class="rolai-text-lead">We secure "Trust" for your business through our specialized multi-layer validation engine.</p>
+                </div>
+                
+                <div class="rolai-grid-3" style="margin-top: 60px;">
+                    <div class="rolai-card" style="background: rgba(255,255,255,0.85);">
+                        <div class="rolai-icon-box"><i class="fa-solid fa-flask"></i></div>
+                        <h3 class="rolai-h3">Living Labs</h3>
+                        <p>University campuses and industrial sites act as Living Labs to verify technology in real ASEAN environments.</p>
+                    </div>
+                    
+                    <div class="rolai-card" style="background: rgba(255,255,255,0.85);">
+                        <div class="rolai-icon-box"><i class="fa-solid fa-users-gear"></i></div>
+                        <h3 class="rolai-h3">Local Experts</h3>
+                        <p>Engineers and researchers don't just advise; they directly execute and manage your technology deployment.</p>
+                    </div>
+                    
+                    <div class="rolai-card" style="background: rgba(255,255,255,0.85);">
+                        <div class="rolai-icon-box"><i class="fa-solid fa-certificate"></i></div>
+                        <h3 class="rolai-h3">Standardized Trust</h3>
+                        <p>We provide a standardized framework to make ASEAN sales and expansion 10x easier and risk-free.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO: Ecosystem -->
+    <style>
+        .network-hero {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            height: 450px;
+            margin: 40px auto 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .network-glow {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px; height: 500px;
+            background: radial-gradient(ellipse at center, rgba(46,91,255,0.15) 0%, rgba(255,255,255,0) 65%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .network-track {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid rgba(46,91,255,0.2);
+            border-radius: 1000px;
+            z-index: 1;
+        }
+        .track-1 { width: 350px; height: 100px; }
+        .track-2 { width: 550px; height: 200px; }
+        .track-3 { width: 750px; height: 300px; border: 1px dashed rgba(46,91,255,0.15); }
+        
+        .network-center-btn {
+            position: relative;
+            z-index: 10;
+            background: var(--rolai-blue-primary);
+            border: 1px solid rgba(255,255,255,0.4);
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 1000px;
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(46,91,255,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .network-center-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(46,91,255,0.5), inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+        
+        .network-node {
+            position: absolute;
+            z-index: 5;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 3px solid #ffffff;
+            box-shadow: 0 8px 24px rgba(46,91,255,0.2);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        .network-node:hover { transform: scale(1.1); z-index: 20; border-color: var(--rolai-blue-primary); }
+        .network-node img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .network-icon-node {
+            position: absolute;
+            z-index: 5;
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 1px solid rgba(46,91,255,0.2);
+            color: var(--rolai-blue-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            box-shadow: 0 8px 24px rgba(46,91,255,0.15);
+        }
+        
+        /* Light Card Style with Highlight Border */
+        .ecosystem-light-card {
+            background: #ffffff;
+            border-radius: var(--rolai-radius-md);
+            padding: 24px;
+            color: var(--rolai-text-body);
+            transition: all 0.3s ease;
+            height: 100%;
+            /* Highlight border */
+            border: 2px solid rgba(46,91,255,0.2);
+            box-shadow: 0 4px 20px rgba(46,91,255,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .ecosystem-light-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, #6f9aff, #2e5bff);
+        }
+        .ecosystem-light-card:hover {
+            border-color: var(--rolai-blue-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(46,91,255,0.15);
+        }
+        .ecosystem-light-card .rolai-icon-box {
+            background: var(--rolai-blue-bg);
+            color: var(--rolai-blue-primary);
+            box-shadow: none;
+            width: 48px; height: 48px; font-size: 20px;
+        }
+        .ecosystem-light-card h3 { color: var(--rolai-text-headline); font-size: 1.15rem; }
+        .ecosystem-light-card strong { color: var(--rolai-text-headline); font-weight: 600; }
+    </style>
+    
+    <section id="who" class="rolai-section" style="background: linear-gradient(180deg, var(--rolai-bg-main) 0%, #f4f7ff 100%); overflow: hidden; position: relative;">
+        
+        <div class="rolai-container" style="position: relative; z-index: 3;">
+            <div class="section-header" style="position: relative; z-index: 10;">
+                <span class="rolai-eyebrow">Ecosystem</span>
+                <h2 class="rolai-h2">Who Should Join <span class="text-primary">M-Expert</span>?</h2>
+            </div>
+            
+            <div class="network-hero">
+                <div class="network-glow"></div>
+                
+                <div class="network-track track-1"></div>
+                <div class="network-track track-2"></div>
+                <div class="network-track track-3"></div>
+                
+                <div class="network-center-btn">
+                    Join the Ecosystem
+                </div>
+                
+                <!-- Avatars -->
+                <div class="network-node" style="width: 70px; height: 70px; top: 50%; left: 50%; margin-top: -85px; margin-left: -50px;">
+                    <img src="Media/Chuyên gia/063416b8774d65c6f4beb21b6b513404.jpg" alt="Expert">
+                </div>
+                <div class="network-node" style="width: 80px; height: 80px; top: 50%; left: 50%; margin-top: -100px; margin-left: -230px;">
+                    <img src="Media/Chuyên gia/141399a8b94d2ad0fe25f567372dbe8a.jpg" alt="Expert">
+                </div>
+                <div class="network-node" style="width: 65px; height: 65px; top: 50%; left: 50%; margin-top: -115px; margin-left: 160px;">
+                    <img src="Media/Chuyên gia/36536f365047183e3c9dc46a26706c08.jpg" alt="Expert">
+                </div>
+                <div class="network-node" style="width: 85px; height: 85px; top: 50%; left: 50%; margin-top: 50px; margin-left: -280px;">
+                    <img src="Media/Chuyên gia/4996b79653aea03b5225f7a4ac7fff47.jpg" alt="Expert">
+                </div>
+                <div class="network-node" style="width: 75px; height: 75px; top: 50%; left: 50%; margin-top: 75px; margin-left: 200px;">
+                    <img src="Media/Chuyên gia/65d1e130199f47fc09f55540f86f2a3f.jpg" alt="Expert">
+                </div>
+                <div class="network-node" style="width: 60px; height: 60px; top: 50%; left: 50%; margin-top: 50px; margin-left: -30px;">
+                    <img src="Media/Chuyên gia/75d0b77c86a249b9d6ca7ee3856be375.jpg" alt="Expert">
+                </div>
+                
+                <!-- Icon Pills -->
+                <div class="network-icon-node" style="top: 50%; left: 50%; margin-top: 10px; margin-left: -370px;">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <div class="network-icon-node" style="top: 50%; left: 50%; margin-top: 110px; margin-left: 50px;">
+                    <i class="fa-solid fa-thumbs-up"></i>
+                </div>
+                <div class="network-icon-node" style="top: 50%; left: 50%; margin-top: -20px; margin-left: 320px;">
+                    <i class="fa-solid fa-arrow-pointer"></i>
+                </div>
+                
+
+            </div>
+            
+            <div class="rolai-grid-3" style="position: relative; z-index: 10;">
+                <!-- Solution Provider -->
+                <div class="ecosystem-light-card">
+                    <div class="rolai-icon-box"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h3 class="rolai-h3">Solution Provider</h3>
+                    <ul style="list-style: none; padding: 0; font-size: 0.95rem;">
+                        <li style="margin-bottom: 12px;"><strong>Target:</strong> Global tech companies entering ASEAN.</li>
+                        <li style="margin-bottom: 12px;"><strong>Role:</strong> Local PoC & Expert sales support.</li>
+                        <li><strong>Why:</strong> Zero risk, Fast market entry.</li>
+                    </ul>
+                </div>
+                
+                <!-- Local Expert -->
+                <div class="ecosystem-light-card">
+                    <div class="rolai-icon-box"><i class="fa-solid fa-user-tie"></i></div>
+                    <h3 class="rolai-h3">Local Expert</h3>
+                    <ul style="list-style: none; padding: 0; font-size: 0.95rem;">
+                        <li style="margin-bottom: 12px;"><strong>Target:</strong> Professors, researchers, engineers, and regional advisors.</li>
+                        <li style="margin-bottom: 12px;"><strong>Role:</strong> Project execution & Revenue generation.</li>
+                        <li><strong>Why:</strong> Career growth & Community impact.</li>
+                    </ul>
+                </div>
+                
+                <!-- Solution Demander -->
+                <div class="ecosystem-light-card">
+                    <div class="rolai-icon-box"><i class="fa-solid fa-building"></i></div>
+                    <h3 class="rolai-h3">Solution Demander</h3>
+                    <ul style="list-style: none; padding: 0; font-size: 0.95rem;">
+                        <li style="margin-bottom: 12px;"><strong>Target:</strong> Local firms or institutions with industrial or social problems.</li>
+                        <li style="margin-bottom: 12px;"><strong>Role:</strong> Adoption of verified global tech solutions.</li>
+                        <li><strong>Why:</strong> Cost savings & Productivity.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUCCESS: Success Stories -->
+    <style>
+        .case-card { transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); cursor: pointer; }
+        .case-card:hover { transform: translateY(-8px); }
+        .case-link-btn { transition: all 0.3s ease; }
+        .case-card:hover .case-link-btn { transform: scale(1.1) rotate(15deg); background-color: var(--rolai-blue-primary); color: #ffffff; box-shadow: var(--rolai-shadow-glow); }
+        .case-img-wrap img { transition: transform 0.7s ease; }
+        .case-card:hover .case-img-wrap img { transform: scale(1.05); }
+        
+        @media (max-width: 768px) {
+            .success-header-row { flex-direction: column; align-items: flex-start !important; gap: 24px; }
+        }
+    </style>
+    <section id="success" class="rolai-section" style="background-color: #ffffff; padding-top: 100px; padding-bottom: 80px;">
+        <div class="rolai-container">
+            <!-- Header Row -->
+            <div class="success-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 60px; flex-wrap: wrap; gap: 20px;">
+                <h2 class="rolai-h2" style="margin: 0;">
+                    Our <span class="text-primary">Success Stories</span>
+                </h2>
+                <a href="#" class="rolai-btn rolai-btn-primary">
+                    See All Case Studies
+                </a>
+            </div>
+
+            <!-- Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px;">
+                <!-- Case 1 -->
+                <div class="case-card" style="display: flex; flex-direction: column; gap: 24px;">
+                    <div class="case-img-wrap" style="width: 100%; aspect-ratio: 4/3; border-radius: 32px; overflow: hidden; border: 2px solid var(--rolai-blue-bg); position: relative;">
+                        <!-- Placeholder matching prompt's aesthetic -->
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800" alt="Case 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    
+                    <div class="case-content" style="display: flex; flex-direction: column; gap: 16px;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;">
+                            <h3 class="rolai-h3" style="margin: 0; font-size: 1.45rem;">"Leaf" (AIoT Energy Management)</h3>
+                            <a href="#" class="case-link-btn" style="width: 44px; height: 44px; border-radius: 50%; background-color: var(--rolai-text-headline); color: #ffffff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; text-decoration: none; font-size: 1.1rem;">
+                                <i class="fa-solid fa-arrow-up-right"></i>
+                            </a>
+                        </div>
+                        
+                        <p style="color: var(--rolai-text-body); font-size: 1rem; margin: 0; line-height: 1.6;">
+                            Verified 18% energy savings for 24-hour retail franchises in Vietnam through our standardized "Trust Service" and local experts.
+                        </p>
+                        
+                        <!-- Tags -->
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px;">
+                            <span style="background-color: var(--rolai-blue-bg); color: var(--rolai-blue-primary); padding: 6px 14px; border-radius: 100px; font-weight: 600; font-size: 0.85rem;">18% Energy Savings</span>
+                            <span style="background-color: var(--rolai-blue-primary); color: #ffffff; padding: 6px 14px; border-radius: 100px; font-weight: 600; font-size: 0.85rem;">Vietnam & ASEAN</span>
+                            <span style="background-color: #f1f5f9; color: var(--rolai-text-body); padding: 6px 14px; border-radius: 100px; font-weight: 600; font-size: 0.85rem;">Zero Risk Entry</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="case-card" style="display: flex; flex-direction: column; gap: 24px;">
+                    <div class="case-img-wrap" style="width: 100%; aspect-ratio: 4/3; border-radius: 32px; overflow: hidden; border: 2px solid transparent; position: relative;">
+                        <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&q=80&w=800" alt="Case 2" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    
+                    <div class="case-content" style="display: flex; flex-direction: column; gap: 16px;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;">
+                            <h3 class="rolai-h3" style="margin: 0; font-size: 1.45rem;">"Vegetation Mat" in Dong Thap</h3>
+                            <a href="#" class="case-link-btn" style="width: 44px; height: 44px; border-radius: 50%; background-color: var(--rolai-text-headline); color: #ffffff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; text-decoration: none; font-size: 1.1rem;">
+                                <i class="fa-solid fa-arrow-up-right"></i>
+                            </a>
+                        </div>
+                        
+                        <p style="color: var(--rolai-text-body); font-size: 1rem; margin: 0; line-height: 1.6;">
+                            Deployed advanced vegetation mat technology in local environments to solve erosion and soil quality issues directly.
+                        </p>
+                        
+                        <!-- Tags -->
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px;">
+                            <span style="background-color: var(--rolai-blue-bg); color: var(--rolai-blue-primary); padding: 6px 14px; border-radius: 100px; font-weight: 600; font-size: 0.85rem;">Local Validation</span>
+                            <span style="background-color: var(--rolai-blue-primary); color: #ffffff; padding: 6px 14px; border-radius: 100px; font-weight: 600; font-size: 0.85rem;">Dong Thap Province</span>
+                            <span style="background-color: #f1f5f9; color: var(--rolai-text-body); padding: 6px 14px; border-radius: 100px; font-weight: 600; font-size: 0.85rem;">Cost Efficient</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 3: Empty State -->
+                <div class="case-card" style="display: flex; flex-direction: column; gap: 24px;">
+                    <div class="case-img-wrap" style="width: 100%; aspect-ratio: 4/3; border-radius: 32px; overflow: hidden; border: 2px dashed var(--rolai-blue-primary); background-color: var(--rolai-blue-bg); display: flex; align-items: center; justify-content: center; position: relative;">
+                        <i class="fa-solid fa-plus" style="font-size: 3rem; color: var(--rolai-blue-primary); opacity: 0.6;"></i>
+                    </div>
+                    
+                    <div class="case-content" style="display: flex; flex-direction: column; gap: 16px;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;">
+                            <h3 class="rolai-h3" style="margin: 0; font-size: 1.45rem;">Your Success Story Here</h3>
+                            <a href="#" class="case-link-btn" style="width: 44px; height: 44px; border-radius: 50%; background-color: var(--rolai-text-headline); color: #ffffff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; text-decoration: none; font-size: 1.1rem;">
+                                <i class="fa-solid fa-arrow-up-right"></i>
+                            </a>
+                        </div>
+                        
+                        <p style="color: var(--rolai-text-body); font-size: 1rem; margin: 0; line-height: 1.6;">
+                            Become the next success case in ASEAN. Validate and deploy your technology with M-Expert's TaaS engine.
+                        </p>
+                        
+                        <!-- Tags -->
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px;">
+                            <span style="background-color: var(--rolai-blue-bg); color: var(--rolai-blue-primary); padding: 6px 14px; border-radius: 100px; font-weight: 600; font-size: 0.85rem;">Join Ecosystem</span>
+                            <span style="background-color: #f1f5f9; color: var(--rolai-text-body); padding: 6px 14px; border-radius: 100px; font-weight: 600; font-size: 0.85rem;">Start Now</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GLOBAL PARTNERS -->
+    <section class="rolai-section" style="padding-top: 40px;">
+        <div class="rolai-container" style="text-align: center;">
+            <h2 class="rolai-h2" style="font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 16px;">M-Expert <span class="text-primary">Global Partners</span></h2>
+            <p class="rolai-text-lead" style="margin-bottom: 40px;">ASEAN’s top universities and institutions are with M-Expert.</p>
+            
+            <div class="logo-marquee-pill" style="margin-top: 60px;">
+                <!-- Decorative dashes -->
+                <div class="pill-dash-top"></div>
+                <div class="pill-dash-bottom"></div>
+                
+                <!-- Center Crescent -->
+                <div class="logo-center-ring"></div>
+                
+                <!-- Sliding Items -->
+                <div class="marquee-track">
+                    <div class="logo-bubble item-1"><img src="Media/logo/Chiang_mai_university_logo.png.webp" alt="CMU"></div>
+                    <div class="logo-bubble item-2"><img src="Media/logo/RUPP_logo.png.webp" alt="RUPP"></div>
+                    <div class="logo-bubble item-3"><img src="Media/logo/peking-university-ss.x447b17c4.png.webp" alt="PKU"></div>
+                    <div class="logo-bubble item-4"><img src="Media/logo/logo_sciencepark.png.webp" alt="Science Park"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACTION: Final CTA -->
+    <section id="cta" class="rolai-section" style="padding-top: 60px;">
+        <div class="rolai-container" style="text-align: center;">
+            <h2 class="rolai-h2">Ready to build <span class="text-primary">Trust</span>?</h2>
+            <p class="rolai-text-lead" style="margin-bottom: 40px;">Choose your role to start your ASEAN expansion journey today.</p>
+            
+            <div class="hero-cta-group" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 0;">
+                <a href="#" class="rolai-btn rolai-btn-primary">Join as Solution Provider</a>
+                <a href="#" class="rolai-btn rolai-btn-secondary">Register as Expert</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="rolai-footer">
+        <div class="rolai-container" style="text-align: center;">
+            <div class="logo" style="justify-content: center; margin-bottom: 24px;">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>M-Expert</span>
+            </div>
+            <p>&copy; 2026 M-Expert. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
