@@ -308,8 +308,7 @@
             <h1 class="rolai-h1">ASEAN Business, Now Powered by <span class="text-primary">"Trust as a Service"</span>
             </h1>
             <p class="rolai-text-lead" style="margin-bottom: 40px;">
-                Beyond buyer matching or exhibitions, our ASEAN universities and experts implement your technology
-                directly on-site.
+                AI can find buyer for your technologies but cannot gain trust from your buyer.
             </p>
 
             <div class="hero-cta-group">
@@ -688,56 +687,6 @@
                 <h2 class="rolai-h2">Who Should Join <span class="text-primary">M-Expert</span>?</h2>
             </div>
 
-            <div class="network-hero">
-                <div class="network-glow"></div>
-
-                <div class="network-track track-1"></div>
-                <div class="network-track track-2"></div>
-                <div class="network-track track-3"></div>
-
-                <div class="network-center-btn">
-                    Join the Ecosystem
-                </div>
-
-                <!-- Avatars -->
-                <div class="network-node"
-                    style="width: 70px; height: 70px; top: 50%; left: 50%; margin-top: -85px; margin-left: -50px;">
-                    <img src="Media/Chuyên gia/063416b8774d65c6f4beb21b6b513404.jpg" alt="Expert">
-                </div>
-                <div class="network-node"
-                    style="width: 80px; height: 80px; top: 50%; left: 50%; margin-top: -100px; margin-left: -230px;">
-                    <img src="Media/Chuyên gia/141399a8b94d2ad0fe25f567372dbe8a.jpg" alt="Expert">
-                </div>
-                <div class="network-node"
-                    style="width: 65px; height: 65px; top: 50%; left: 50%; margin-top: -115px; margin-left: 160px;">
-                    <img src="Media/Chuyên gia/36536f365047183e3c9dc46a26706c08.jpg" alt="Expert">
-                </div>
-                <div class="network-node"
-                    style="width: 85px; height: 85px; top: 50%; left: 50%; margin-top: 50px; margin-left: -280px;">
-                    <img src="Media/Chuyên gia/4996b79653aea03b5225f7a4ac7fff47.jpg" alt="Expert">
-                </div>
-                <div class="network-node"
-                    style="width: 75px; height: 75px; top: 50%; left: 50%; margin-top: 75px; margin-left: 200px;">
-                    <img src="Media/Chuyên gia/65d1e130199f47fc09f55540f86f2a3f.jpg" alt="Expert">
-                </div>
-                <div class="network-node"
-                    style="width: 60px; height: 60px; top: 50%; left: 50%; margin-top: 50px; margin-left: -30px;">
-                    <img src="Media/Chuyên gia/75d0b77c86a249b9d6ca7ee3856be375.jpg" alt="Expert">
-                </div>
-
-                <!-- Icon Pills -->
-                <div class="network-icon-node" style="top: 50%; left: 50%; margin-top: 10px; margin-left: -370px;">
-                    <i class="fa-solid fa-lock"></i>
-                </div>
-                <div class="network-icon-node" style="top: 50%; left: 50%; margin-top: 110px; margin-left: 50px;">
-                    <i class="fa-solid fa-thumbs-up"></i>
-                </div>
-                <div class="network-icon-node" style="top: 50%; left: 50%; margin-top: -20px; margin-left: 320px;">
-                    <i class="fa-solid fa-arrow-pointer"></i>
-                </div>
-
-
-            </div>
 
             <style>
                 .eco-card-new {
@@ -901,6 +850,243 @@
                     </div>
                 </div>
             </div>
+
+            <!-- How We Work Section -->
+            <style>
+                .hww-section {
+                    margin-top: 100px;
+                }
+                .hww-grid {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    gap: 12px;
+                    position: relative;
+                }
+                .hww-step {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    width: calc(20% - 24px);
+                    position: relative;
+                    z-index: 2;
+                }
+                .hww-icon-wrapper {
+                    position: relative;
+                    width: 100px;
+                    height: 100px;
+                    background-color: #ffffff;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 40px;
+                    color: var(--rolai-text-headline);
+                    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+                    border: 2px solid rgba(46, 91, 255, 0.1);
+                    margin-bottom: 30px;
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                }
+                .hww-step:hover .hww-icon-wrapper {
+                    transform: translateY(-5px);
+                    box-shadow: 0 15px 35px rgba(46, 91, 255, 0.15);
+                    border-color: var(--rolai-blue-primary);
+                }
+                .hww-icon-wrapper::before {
+                    content: '';
+                    position: absolute;
+                    top: -14px;
+                    left: -14px;
+                    right: -14px;
+                    bottom: -14px;
+                    border-radius: 50%;
+                    border: 1px solid rgba(46, 91, 255, 0.15);
+                    z-index: -1;
+                    transition: all 0.3s ease;
+                }
+                .hww-step:hover .hww-icon-wrapper::before {
+                    background: rgba(46, 91, 255, 0.03);
+                    border-color: rgba(46, 91, 255, 0.3);
+                }
+                .hww-number {
+                    position: absolute;
+                    top: -5px;
+                    left: -5px;
+                    width: 32px;
+                    height: 32px;
+                    background-color: var(--rolai-blue-primary);
+                    color: #ffffff;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 0.85rem;
+                    font-weight: 700;
+                    border: 3px solid #f4f7ff;
+                    box-shadow: 0 4px 10px rgba(46, 91, 255, 0.3);
+                }
+                .hww-card {
+                    background-color: #ffffff;
+                    border-radius: 16px;
+                    padding: 24px 20px;
+                    text-align: center;
+                    width: 100%;
+                    height: 100%;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+                    border: 1px solid rgba(0,0,0,0.03);
+                    transition: transform 0.3s ease;
+                }
+                .hww-step:hover .hww-card {
+                    transform: translateY(-5px);
+                    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+                }
+                .hww-card h4 {
+                    color: #0F172A;
+                    font-size: 0.9rem;
+                    font-weight: 800;
+                    margin-bottom: 12px;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    line-height: 1.4;
+                }
+                .hww-card-divider {
+                    width: 24px;
+                    height: 3px;
+                    background-color: var(--rolai-blue-primary);
+                    margin: 0 auto 16px;
+                    border-radius: 2px;
+                }
+                .hww-card p {
+                    color: var(--rolai-text-body);
+                    font-size: 0.85rem;
+                    line-height: 1.6;
+                    margin: 0;
+                }
+                .hww-arrow {
+                    color: var(--rolai-blue-primary);
+                    font-size: 24px;
+                    margin-top: 38px; /* Vertically centered with 100px icon */
+                    flex-shrink: 0;
+                    opacity: 0.8;
+                }
+
+                @media (max-width: 1024px) {
+                    .hww-grid {
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 30px;
+                    }
+                    .hww-step {
+                        width: 100%;
+                        max-width: 400px;
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 24px;
+                    }
+                    .hww-icon-wrapper {
+                        margin-bottom: 0;
+                        flex-shrink: 0;
+                        width: 80px;
+                        height: 80px;
+                        font-size: 32px;
+                    }
+                    .hww-card {
+                        text-align: left;
+                    }
+                    .hww-card-divider {
+                        margin-left: 0;
+                    }
+                    .hww-arrow {
+                        transform: rotate(90deg);
+                        margin-top: 0;
+                    }
+                }
+                @media (max-width: 480px) {
+                    .hww-step {
+                        flex-direction: column;
+                        text-align: center;
+                    }
+                    .hww-card {
+                        text-align: center;
+                    }
+                    .hww-card-divider {
+                        margin: 0 auto 16px;
+                    }
+                }
+            </style>
+
+            <div class="hww-section">
+                <div class="hww-grid">
+                    <!-- Step 1 -->
+                    <div class="hww-step">
+                        <div class="hww-icon-wrapper">
+                            <div class="hww-number">01</div>
+                            <i class="fa-regular fa-address-card" style="color: #0F172A;"></i>
+                        </div>
+                        <div class="hww-card">
+                            <h4>Join & Create Profile</h4>
+                            <div class="hww-card-divider"></div>
+                            <p>Solution Providers, Local Experts, and Buyers create their profile and showcase capabilities on M-Expert.</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right hww-arrow"></i>
+
+                    <!-- Step 2 -->
+                    <div class="hww-step">
+                        <div class="hww-icon-wrapper">
+                            <div class="hww-number">02</div>
+                            <i class="fa-solid fa-users-viewfinder" style="color: #0F172A;"></i>
+                        </div>
+                        <div class="hww-card">
+                            <h4>Find & Discover</h4>
+                            <div class="hww-card-divider"></div>
+                            <p>Buyers find the right solutions. Solution Providers and Local Experts discover the right partners and opportunities.</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right hww-arrow"></i>
+
+                    <!-- Step 3 -->
+                    <div class="hww-step">
+                        <div class="hww-icon-wrapper">
+                            <div class="hww-number">03</div>
+                            <i class="fa-solid fa-comments" style="color: var(--rolai-blue-primary);"></i>
+                        </div>
+                        <div class="hww-card">
+                            <h4>Connect & Engage</h4>
+                            <div class="hww-card-divider"></div>
+                            <p>Start real conversations, exchange requirements, and explore collaboration opportunities.</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right hww-arrow"></i>
+
+                    <!-- Step 4 -->
+                    <div class="hww-step">
+                        <div class="hww-icon-wrapper">
+                            <div class="hww-number">04</div>
+                            <i class="fa-solid fa-puzzle-piece" style="color: #0F172A;"></i>
+                        </div>
+                        <div class="hww-card">
+                            <h4>Collaborate & Deliver</h4>
+                            <div class="hww-card-divider"></div>
+                            <p>Work together across borders with the support of local expertise to implement solutions and create impact.</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-arrow-right hww-arrow"></i>
+
+                    <!-- Step 5 -->
+                    <div class="hww-step">
+                        <div class="hww-icon-wrapper">
+                            <div class="hww-number">05</div>
+                            <i class="fa-solid fa-chart-line" style="color: #0F172A;"></i>
+                        </div>
+                        <div class="hww-card">
+                            <h4>Grow & Succeed</h4>
+                            <div class="hww-card-divider"></div>
+                            <p>Build long-term partnerships, expand across ASEAN, and unlock sustainable business growth.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -953,8 +1139,7 @@
                     <div class="case-img-wrap"
                         style="width: 100%; aspect-ratio: 4/3; border-radius: 32px; overflow: hidden; border: 2px solid var(--rolai-blue-bg); position: relative;">
                         <!-- Placeholder matching prompt's aesthetic -->
-                        <img src="Media/Leaf.png"
-                            alt="Case 1" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="Media/Leaf.png" alt="Case 1" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
 
                     <div class="case-content" style="display: flex; flex-direction: column; gap: 16px;">
@@ -994,8 +1179,8 @@
                 <div class="case-card" style="display: flex; flex-direction: column; gap: 24px;">
                     <div class="case-img-wrap"
                         style="width: 100%; aspect-ratio: 4/3; border-radius: 32px; overflow: hidden; border: 2px solid transparent; position: relative;">
-                        <img src="Media/vegetationmat.png"
-                            alt="Case 2" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="Media/vegetationmat.png" alt="Case 2"
+                            style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
 
                     <div class="case-content" style="display: flex; flex-direction: column; gap: 16px;">
