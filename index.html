@@ -1,1420 +1,795 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M-Expert | ASEAN Business</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>M-Expert | ASEAN Business, Powered by Trust as a Service</title>
+    <meta name="description"
+        content="M-Expert: Trust as a Service (TaaS) for ASEAN. University-validated experts and Living Labs help global tech companies enter ASEAN markets 10x faster." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="M-Expert: Trust as a Service for ASEAN" />
+    <meta property="og:description"
+        content="The expert-led project execution platform helping global tech enter ASEAN markets 10x faster, through university-validated experts and Living Labs." />
+    <meta property="og:url" content="https://mekonglink.com/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Organization","name":"M-Expert","url":"https://mekonglink.com/","description":"Trust as a Service (TaaS) platform for global technology companies entering ASEAN markets.","areaServed":["Vietnam","Thailand","Indonesia","Malaysia","Philippines","Singapore"]}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="rolai-framework.css">
-    <style>
-        /* Specific adjustments not in the general framework */
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--rolai-text-headline);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logo i {
-            color: var(--rolai-blue-primary);
-        }
-
-        .hero-section {
-            padding: 180px 0 60px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-bg-accent {
-            position: absolute;
-            top: -20%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(46, 91, 255, 0.08) 0%, rgba(248, 248, 248, 0) 70%);
-            z-index: -1;
-        }
-
-        .text-primary {
-            color: var(--rolai-blue-primary);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .hero-cta-group {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-        }
-
-        /* Marquee Pill Design */
-        .social-proof {
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .logo-marquee-pill {
-            background: #eef2ff;
-            border-radius: 1000px;
-            box-shadow: inset 0 2px 10px rgba(255, 255, 255, 0.7), 0 10px 40px rgba(46, 91, 255, 0.08);
-            border: 1px solid #c8d8ff;
-            padding: 24px;
-            overflow: hidden;
-            position: relative;
-            max-width: 900px;
-            height: 160px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-marquee-pill::before,
-        .logo-marquee-pill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            width: 150px;
-            height: 100%;
-            z-index: 6;
-            /* above bubbles but below center ring if needed */
-            pointer-events: none;
-        }
-
-        .logo-marquee-pill::before {
-            left: 0;
-            background: linear-gradient(to right, #eef2ff, transparent);
-        }
-
-        .logo-marquee-pill::after {
-            right: 0;
-            background: linear-gradient(to left, #eef2ff, transparent);
-        }
-
-        .pill-dash-top,
-        .pill-dash-bottom {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 24px;
-            height: 4px;
-            background-color: var(--rolai-blue-primary);
-            border-radius: 4px;
-            z-index: 10;
-        }
-
-        .pill-dash-top {
-            top: 0;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-        }
-
-        .pill-dash-bottom {
-            bottom: 0;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-        }
-
-        .marquee-track {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-bubble {
-            position: absolute;
-            top: 50%;
-            margin-top: -36px;
-            margin-left: -36px;
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            background: #ffffff;
-            box-shadow: var(--rolai-shadow-soft);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px;
-            z-index: 5;
-            animation: slideRightScale 15s linear infinite;
-        }
-
-        .logo-bubble img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-
-        @keyframes slideRightScale {
-            0% {
-                left: -10%;
-                transform: scale(0.8);
-                opacity: 0;
-            }
-
-            10% {
-                left: 2%;
-                transform: scale(0.8);
-                opacity: 1;
-            }
-
-            40% {
-                left: 38%;
-                transform: scale(0.8);
-            }
-
-            45% {
-                left: 44%;
-                transform: scale(1.1);
-            }
-
-            50% {
-                left: 50%;
-                transform: scale(1.55);
-                box-shadow: 0 4px 20px rgba(46, 91, 255, 0.3);
-            }
-
-            55% {
-                left: 56%;
-                transform: scale(1.1);
-            }
-
-            60% {
-                left: 62%;
-                transform: scale(0.8);
-                box-shadow: var(--rolai-shadow-soft);
-            }
-
-            90% {
-                left: 98%;
-                transform: scale(0.8);
-                opacity: 1;
-            }
-
-            100% {
-                left: 110%;
-                transform: scale(0.8);
-                opacity: 0;
-            }
-        }
-
-        .item-1 {
-            animation-delay: 0s;
-        }
-
-        .item-2 {
-            animation-delay: -3.75s;
-        }
-
-        .item-3 {
-            animation-delay: -7.5s;
-        }
-
-        .item-4 {
-            animation-delay: -11.25s;
-        }
-
-        /* Central Crescent Ring */
-        .logo-center-ring {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 112px;
-            /* Same size as scaled bubble */
-            height: 112px;
-            border-radius: 50%;
-            background: transparent;
-            /* Inset shadow draws the crescent ON TOP of the white bubble, outer shadow is glow */
-            box-shadow: inset 18px 0 0px 0px var(--rolai-blue-primary), -10px 0 24px 6px rgba(46, 91, 255, 0.4);
-            z-index: 10;
-            pointer-events: none;
-        }
-    </style>
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-    <!-- Navigation (Minimalist) -->
-    <nav class="rolai-navbar">
-        <div class="rolai-container rolai-nav-inner">
-            <div class="logo">
-                <img src="Media/Mexpertlogo.png" alt="M-Expert Logo"
-                    style="height: 40px; width: auto; object-fit: contain;">
-            </div>
-
-            <div style="display: flex; gap: 24px; align-items: center;">
-                <a href="https://mekonglink.com/" class="rolai-btn rolai-btn-primary">Return Mekonglink</a>
+    <!-- ============================================================
+     NAVBAR
+============================================================ -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-inner">
+            <a href="#hero" class="nav-logo">
+                <img src="Media/Mexpertlogo.webp" alt="M" class="nav-logo-img" />
+                <span class="nav-logo-text">Expert</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#solution" data-en="TaaS Model" data-vi="Mô hình TaaS">TaaS Model</a></li>
+                <li><a href="#join" data-en="Who Joins" data-vi="Ai tham gia">Who Joins</a></li>
+                <li><a href="#stories" data-en="Success" data-vi="Thành công">Success</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="lang-btn" id="lang-btn" aria-label="Switch language">
+                    <span id="lang-label">EN / VI</span>
+                </button>
+                <a href="https://mekonglink.com" class="nav-mekong" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <img src="Media/mekonglinklogo.png" alt="MekongLink" class="nav-mekong-logo" />
+                </a>
             </div>
         </div>
     </nav>
 
-    <!-- ATTENTION: Hero Flow & Above the Fold -->
-    <style>
-        .hero-video-wrapper {
-            position: absolute;
-            top: 96px;
-            /* Start below the fixed header */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 96%;
-            max-width: 1600px;
-            height: calc(100% - 116px);
-            /* Keep border clear at the bottom */
-            border-radius: 32px;
-            overflow: hidden;
-            z-index: -2;
-            box-shadow: 0 10px 40px rgba(46, 91, 255, 0.1);
-        }
+    <main>
 
-        .hero-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.45);
-            /* More visible video */
-        }
-    </style>
-    <section class="hero-section" style="position: relative; z-index: 1; padding-top: 220px; padding-bottom: 120px;">
-        <div class="hero-video-wrapper">
-            <video autoplay muted loop playsinline class="hero-video">
-                <source src="Media/viideohero .mp4" type="video/mp4">
+        <!-- ============================================================
+     HEROWhite centered
+============================================================ -->
+        <section id="hero" class="hero hero-light">
+            <!-- Background video -->
+            <video class="hero-bg-video" autoplay muted loop playsinline>
+                <source src="Media/herovideo.mp4" type="video/mp4" />
             </video>
-            <div class="hero-video-overlay"></div>
-        </div>
-        <div class="hero-bg-accent"></div>
-        <div class="rolai-container" style="position: relative; z-index: 2;">
-            <h1 class="rolai-h1">ASEAN Business, Now Powered by <span class="text-primary">"Trust as a Service"</span>
-            </h1>
-            <p class="rolai-text-lead" style="margin-bottom: 40px;">
-                AI can find buyer for your technologies but cannot gain trust from your buyer.
-            </p>
-
-            <div class="hero-cta-group">
-                <a href="#cta" class="rolai-btn rolai-btn-primary">Join With Us</a>
-                <a href="#why" class="rolai-btn rolai-btn-secondary">Contact With Us</a>
-            </div>
-        </div>
-
-
-    </section>
-
-    <!-- INTEREST: Why M-Expert -->
-    <style>
-        .why-bg-lines {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .why-bg-lines svg {
-            width: 100%;
-            height: 100%;
-            opacity: 0.8;
-        }
-    </style>
-    <section id="why" class="rolai-section" style="position: relative; overflow: hidden; background-color: #ffffff;">
-        <div class="why-bg-lines">
-            <svg viewBox="0 0 1000 600" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Extremely faint micro-dot grid for depth -->
-                <defs>
-                    <pattern id="dotGrid" width="40" height="40" patternUnits="userSpaceOnUse">
-                        <circle cx="2" cy="2" r="1.5" fill="rgba(46,91,255,0.03)" />
-                    </pattern>
-                    <!-- Soft glow for nodes -->
-                    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                        <feGaussianBlur stdDeviation="2" result="blur" />
-                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
-                    </filter>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#dotGrid)" />
-
-                <!-- Abstract graceful bezier curves (Fiber optics / Neural path) -->
-                <g fill="none" stroke="rgba(46,91,255,0.05)" stroke-width="1">
-                    <path id="path1" d="M-100,500 C 200,450 300,100 800,200 S 1100,400 1200,300" />
-                    <path id="path2" d="M-50,400 C 300,550 500,50 900,150 S 1100,200 1200,100" stroke-width="0.5" />
-                    <path id="path3" d="M-100,200 C 150,150 450,450 850,350 S 1050,500 1200,450" />
-                    <path id="path4" d="M200,650 C 300,400 600,300 700,-50" stroke-width="0.5" />
-                </g>
-
-                <!-- Moving data particles on paths -->
-                <g fill="rgba(46,91,255,0.6)" filter="url(#glow)">
-                    <circle r="2.5">
-                        <animateMotion dur="15s" repeatCount="indefinite">
-                            <mpath href="#path1" />
-                        </animateMotion>
-                    </circle>
-                    <circle r="1.5">
-                        <animateMotion dur="12s" begin="4s" repeatCount="indefinite">
-                            <mpath href="#path1" />
-                        </animateMotion>
-                    </circle>
-
-                    <circle r="2">
-                        <animateMotion dur="20s" repeatCount="indefinite">
-                            <mpath href="#path2" />
-                        </animateMotion>
-                    </circle>
-                    <circle r="1.5">
-                        <animateMotion dur="18s" begin="8s" repeatCount="indefinite">
-                            <mpath href="#path3" />
-                        </animateMotion>
-                    </circle>
-
-                    <circle r="2">
-                        <animateMotion dur="14s" begin="2s" repeatCount="indefinite">
-                            <mpath href="#path4" />
-                        </animateMotion>
-                    </circle>
-                </g>
-            </svg>
-        </div>
-        <div class="rolai-container" style="position: relative; z-index: 1;">
-            <div class="section-header">
-                <span class="rolai-eyebrow">The Challenge</span>
-                <h2 class="rolai-h2" style="font-size: 2.25rem;">Why ASEAN markets Look Easy <br><span
-                        class="text-primary">but Always Fails</span></h2>
-            </div>
-
-            <div class="rolai-grid-2" style="align-items: center;">
-                <div class="why-image-wrapper"
-                    style="display: flex; justify-content: center; align-items: center; position: relative;">
-                    <!-- Abstract glowing blob behind image -->
-                    <div
-                        style="position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(46,91,255,0.08) 0%, rgba(255,255,255,0) 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: -1;">
-                    </div>
-
-                    <img src="Media/Business man.png" alt="Business Expansion Challenge"
-                        style="width: 100%; max-width: 400px; height: auto; object-fit: contain; mix-blend-mode: multiply; transform: scale(1.1);">
-                </div>
-
-                <div style="display: flex; flex-direction: column; gap: 24px;">
-                    <div class="rolai-card rolai-glass-card"
-                        style="padding: 32px; display: flex; align-items: flex-start; gap: 20px; background-color: rgba(255,255,255,0.85);">
-                        <div class="rolai-icon-box"
-                            style="margin-bottom: 0; flex-shrink: 0; width: 56px; height: 56px; font-size: 24px;"><i
-                                class="fa-solid fa-handshake-slash"></i></div>
-                        <div>
-                            <h3 class="rolai-h3" style="font-size: 1.25rem; margin-bottom: 8px;">On-site verification is
-                                essential</h3>
-                            <p style="margin: 0; font-size: 0.95rem; line-height: 1.5;">Industrial and institutional
-                                buyers in ASEAN require <b>relationship credibility</b>, <b>local references</b>, and
-                                <b>implementation confidence</b>
-                                before adoption.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="rolai-card rolai-glass-card"
-                        style="padding: 32px; display: flex; align-items: flex-start; gap: 20px; background-color: rgba(255,255,255,0.85);">
-                        <div class="rolai-icon-box"
-                            style="margin-bottom: 0; flex-shrink: 0; width: 56px; height: 56px; font-size: 24px;"><i
-                                class="fa-solid fa-cloud-sun-rain"></i></div>
-                        <div>
-                            <h3 class="rolai-h3" style="font-size: 1.25rem; margin-bottom: 8px;">On-site verification is
-                                essential</h3>
-                            <p style="margin: 0; font-size: 0.95rem; line-height: 1.5;">Solutions proven in Korea,
-                                Europe, or the U.S. often require adaptation for <b>ASEAN’s climate</b>,
-                                <b>infrastructure</b>,
-                                <b>regulations</b>, and <b>user behavior</b>.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="rolai-card rolai-glass-card"
-                        style="padding: 32px; display: flex; align-items: flex-start; gap: 20px; background-color: rgba(255,255,255,0.85);">
-                        <div class="rolai-icon-box"
-                            style="margin-bottom: 0; flex-shrink: 0; width: 56px; height: 56px; font-size: 24px;"><i
-                                class="fa-solid fa-network-wired"></i></div>
-                        <div>
-                            <h3 class="rolai-h3" style="font-size: 1.25rem; margin-bottom: 8px;">Difficulties in local
-                                project management</h3>
-                            <p style="margin: 0; font-size: 0.95rem; line-height: 1.5;">Traditional distributors can
-                                sell products, but most <b>cannot localiz</b>, <b>technically validate</b>, and
-                                implement advanced
-                                <b>solutions on-site</b>.
-                            </p>
-                        </div>
-                    </div>
+            <!-- Text content -->
+            <div class="hero-centered">
+                <h1 class="hero-headline reveal">
+                    <span data-en='ASEAN Business Runs on <span class="hero-blue">"Trust as a Service"</span>'
+                        data-vi='Kinh doanh ASEAN vận hành bởi <span class="hero-blue">"Dịch vụ Niềm tin"</span>'>ASEAN
+                        Business Runs on <span class="hero-blue">"Trust as a Service"</span></span>
+                </h1>
+                <p class="hero-sub reveal" data-en="AI finds your buyers. We build their trust."
+                    data-vi="AI tìm người mua cho bạn. Chúng tôi xây dựng niềm tin của họ.">
+                    AI finds your buyers. <strong>We build their trust.</strong>
+                </p>
+                <div class="hero-cta reveal">
+                    <a href="#cta" class="btn btn-primary" data-en="Join with Us" data-vi="Tham gia cùng chúng tôi">Join with Us</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- DESIRE: TaaS Model & Multi-layered Depth -->
-    <section id="taas" class="rolai-section">
-        <div class="rolai-container">
-            <div class="rolai-depth-wrapper">
-                <div class="rolai-depth-layer-1"></div>
-                <div class="rolai-depth-layer-2"></div>
+        <!-- ============================================================
+     CHALLENGE
+============================================================ -->
+        <section id="why" class="challenge-section">
+            <div class="container">
 
-                <div class="section-header">
-                    <span class="rolai-eyebrow">Our Solution</span>
-                    <h2 class="rolai-h2">M-EXPERT - <span class="text-primary">TaaS</span><br> (Trust as a Service
-                        Model)
+                <!-- Header -->
+                <div class="challenge-header reveal">
+                    <h2 class="challenge-headline section-headline"
+                        data-en='Why Your Enterprise Fail on <span class="challenge-accent">ASEAN Market</span>'
+                        data-vi='Tại sao doanh nghiệp của bạn thất bại trên <span class="challenge-accent">thị trường ASEAN</span>'>
+                        Why Your Enterprise Fail on <span class="challenge-accent">ASEAN Market</span>
                     </h2>
-                    <p class="rolai-text-lead">M-Expert is a "Project Execution Engine" that combines university trust
-                        with the capabilities of local experts.<br>We secure "Trust" for your business through three
-                        core strategies:</p>
                 </div>
 
-                <div class="rolai-grid-3" style="margin-top: 60px;">
-                    <div class="rolai-card" style="background: rgba(255,255,255,0.85);">
-                        <div class="rolai-icon-box"><i class="fa-solid fa-flask"></i></div>
-                        <h3 class="rolai-h3">University Living Labs for PoC</h3>
-                        <p>We use both university campuses and actual industrial sites as Living Labs to verify your
-                            technology in ASEAN's unique environment (climate, culture, and regulations).</p>
+                <!-- 3 cards -->
+                <div class="challenge-grid">
+
+                    <div class="challenge-card reveal">
+                        <span class="challenge-num">01</span>
+                        <h3 class="challenge-title" data-en="Trust Comes First" data-vi="Niềm tin là trên hết">Trust
+                            Comes First</h3>
+                        <p class="challenge-desc"
+                            data-en="Industrial and institutional buyers in ASEAN require relationship credibility, local references, and implementation confidence before adoption."
+                            data-vi="Khách hàng doanh nghiệp và tổ chức tại ASEAN yêu cầu uy tín quan hệ, tham chiếu địa phương và sự tự tin triển khai trước khi chấp nhận hợp tác.">
+                            Industrial and institutional buyers in ASEAN require relationship credibility, local
+                            references, and implementation confidence before adoption.
+                        </p>
                     </div>
 
-                    <div class="rolai-card" style="background: rgba(255,255,255,0.85);">
-                        <div class="rolai-icon-box"><i class="fa-solid fa-users-gear"></i></div>
-                        <h3 class="rolai-h3">Local Experts for Project Management</h3>
-                        <p>Local experts and engineers participate directly in the project. They are not just advisors;
-                            they directly execute and manage your project.</p>
+                    <div class="challenge-card reveal">
+                        <span class="challenge-num">02</span>
+                        <h3 class="challenge-title" data-en="On-site Verification Is Essential"
+                            data-vi="Kiểm chứng tại chỗ là điều bắt buộc">On-site Verification Is Essential</h3>
+                        <p class="challenge-desc"
+                            data-en="Solutions proven in Korea, Europe, or the U.S. often require adaptation for ASEAN's climate, infrastructure, regulations, and user behavior."
+                            data-vi="Các giải pháp đã được kiểm chứng tại Hàn Quốc, châu Âu hay Mỹ thường cần thích nghi với khí hậu, cơ sở hạ tầng, quy định và hành vi người dùng của ASEAN.">
+                            Solutions proven in Korea, Europe, or the U.S. often require adaptation for ASEAN's climate,
+                            infrastructure, regulations, and user behavior.
+                        </p>
                     </div>
 
-                    <div class="rolai-card" style="background: rgba(255,255,255,0.85);">
-                        <div class="rolai-icon-box"><i class="fa-solid fa-certificate"></i></div>
-                        <h3 class="rolai-h3">Trust from Local Experts & Universities</h3>
-                        <p>We provide a standardized "Trust Service (TaaS)" with local experts to make ASEAN sales and
-                            expansion 10x easier.</p>
+                    <div class="challenge-card reveal">
+                        <span class="challenge-num">03</span>
+                        <h3 class="challenge-title" data-en="Difficulties in Local Project Management"
+                            data-vi="Khó khăn trong quản lý dự án địa phương">Difficulties in Local Project Management
+                        </h3>
+                        <p class="challenge-desc"
+                            data-en="Traditional distributors can sell products, but most cannot localize, technically validate, and implement advanced solutions on-site."
+                            data-vi="Các nhà phân phối truyền thống có thể bán sản phẩm, nhưng hầu hết không thể địa phương hóa, kiểm định kỹ thuật và triển khai các giải pháp tiên tiến tại chỗ.">
+                            Traditional distributors can sell products, but most cannot localize, technically validate,
+                            and implement advanced solutions on-site.
+                        </p>
                     </div>
+
+                </div>
+
+                <!-- Challenge image -->
+                <div class="challenge-visual reveal">
+                    <img src="Media/challenge.png" alt="ASEAN Market Challenge" />
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============================================================
+     SOLUTION - TaaS Ecosystem Diagram
+============================================================ -->
+        <section id="solution" class="section-gray taas-section">
+            <div class="dot-pattern"></div>
+            <div class="container relative">
+                <div class="section-header text-center reveal">
+                    <h2 data-en='M-Expert Trust as a Service <span style="color:var(--blue)">(TaaS Model)</span>'
+                        data-vi='M-Expert Dịch vụ Niềm tin <span style="color:var(--blue)">(Mô hình TaaS)</span>'>
+                        M-Expert Trust as a Service <span style="color:var(--blue)">(TaaS Model)</span></h2>
+                    <p class="section-subtitle"
+                        data-en='M-Expert is a "Project Execution Engine" that combines university trust with the capabilities of local experts.'
+                        data-vi='M-Expert là "Động cơ Thực thi Dự án" kết hợp uy tín đại học với năng lực của các chuyên gia địa phương.'>
+                        M-Expert is a "Project Execution Engine" that combines university trust with the capabilities of
+                        local experts.</p>
+                </div>
+
+                <!-- TaaS Formula Diagram -->
+                <div class="taas-formula reveal">
+
+                    <!-- Input 1: Your Technology -->
+                    <div class="taas-input">
+                        <div class="taas-input-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <h3 class="taas-input-name"
+                            data-en="Your Technology"
+                            data-vi="Công nghệ của bạn">Your Technology</h3>
+                        <p class="taas-input-desc"
+                            data-en="Global tech solution seeking ASEAN market entry"
+                            data-vi="Giải pháp công nghệ toàn cầu tìm kiếm thị trường ASEAN">
+                            Global tech solution seeking ASEAN market entry</p>
+                    </div>
+
+                    <div class="taas-operator">+</div>
+
+                    <!-- Input 2: PoC with University Living Labs -->
+                    <div class="taas-input">
+                        <div class="taas-input-icon"><i class="fa-solid fa-flask"></i></div>
+                        <h3 class="taas-input-name"
+                            data-en="PoC with University Living Labs"
+                            data-vi="PoC với Living Labs Đại học">PoC with University Living Labs</h3>
+                        <p class="taas-input-desc"
+                            data-en="Academic validation inside real ASEAN campus environments"
+                            data-vi="Kiểm chứng học thuật trong môi trường campus ASEAN thực tế">
+                            Academic validation inside real ASEAN campus environments</p>
+                    </div>
+
+                    <div class="taas-operator">+</div>
+
+                    <!-- Input 3: Local Expert -->
+                    <div class="taas-input">
+                        <div class="taas-input-icon"><i class="fa-solid fa-users-gear"></i></div>
+                        <h3 class="taas-input-name"
+                            data-en="Local Expert"
+                            data-vi="Chuyên gia Địa phương">Local Expert</h3>
+                        <p class="taas-input-desc"
+                            data-en="On-ground professionals managing execution in the target market"
+                            data-vi="Chuyên gia tại chỗ quản lý thực thi tại thị trường mục tiêu">
+                            On-ground professionals managing execution in the target market</p>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="taas-arrow">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+
+                    <!-- Result: TaaS -->
+                    <div class="taas-result">
+                        <div class="taas-result-icon"><i class="fa-solid fa-certificate"></i></div>
+                        <p class="taas-result-label"
+                            data-en="Trust as a Service"
+                            data-vi="Dịch vụ Niềm tin">Trust as a Service</p>
+                        <h3 class="taas-result-name">TaaS</h3>
+                        <div class="taas-result-checks">
+                            <div class="taas-result-check">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span data-en="Technology Verified" data-vi="Công nghệ Xác thực">Technology Verified</span>
+                            </div>
+                            <div class="taas-result-check">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span data-en="Expert-Validated" data-vi="Được Chuyên gia Kiểm chứng">Expert-Validated</span>
+                            </div>
+                            <div class="taas-result-check">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <span data-en="10× Faster ASEAN Entry" data-vi="Gia nhập ASEAN Nhanh 10×">10× Faster ASEAN Entry</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- WHO: Ecosystem -->
-    <style>
-        .network-hero {
-            position: relative;
-            width: 100%;
-            max-width: 900px;
-            height: 450px;
-            margin: 40px auto 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .network-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px;
-            height: 500px;
-            background: radial-gradient(ellipse at center, rgba(46, 91, 255, 0.15) 0%, rgba(255, 255, 255, 0) 65%);
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .network-track {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border: 1px solid rgba(46, 91, 255, 0.2);
-            border-radius: 1000px;
-            z-index: 1;
-        }
-
-        .track-1 {
-            width: 350px;
-            height: 100px;
-        }
-
-        .track-2 {
-            width: 550px;
-            height: 200px;
-        }
-
-        .track-3 {
-            width: 750px;
-            height: 300px;
-            border: 1px dashed rgba(46, 91, 255, 0.15);
-        }
-
-        .network-center-btn {
-            position: relative;
-            z-index: 10;
-            background: var(--rolai-blue-primary);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            color: #ffffff;
-            padding: 12px 24px;
-            border-radius: 1000px;
-            font-size: 1rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(46, 91, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .network-center-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 40px rgba(46, 91, 255, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-        }
-
-        .network-node {
-            position: absolute;
-            z-index: 5;
-            border-radius: 50%;
-            background: #ffffff;
-            border: 3px solid #ffffff;
-            box-shadow: 0 8px 24px rgba(46, 91, 255, 0.2);
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease;
-        }
-
-        .network-node:hover {
-            transform: scale(1.1);
-            z-index: 20;
-            border-color: var(--rolai-blue-primary);
-        }
-
-        .network-node img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .network-icon-node {
-            position: absolute;
-            z-index: 5;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: #ffffff;
-            border: 1px solid rgba(46, 91, 255, 0.2);
-            color: var(--rolai-blue-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            box-shadow: 0 8px 24px rgba(46, 91, 255, 0.15);
-        }
-
-        /* Light Card Style with Highlight Border */
-        .ecosystem-light-card {
-            background: #ffffff;
-            border-radius: var(--rolai-radius-md);
-            padding: 24px;
-            color: var(--rolai-text-body);
-            transition: all 0.3s ease;
-            height: 100%;
-            /* Highlight border */
-            border: 2px solid rgba(46, 91, 255, 0.2);
-            box-shadow: 0 4px 20px rgba(46, 91, 255, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ecosystem-light-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #6f9aff, #2e5bff);
-        }
-
-        .ecosystem-light-card:hover {
-            border-color: var(--rolai-blue-primary);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(46, 91, 255, 0.15);
-        }
-
-        .ecosystem-light-card .rolai-icon-box {
-            background: var(--rolai-blue-bg);
-            color: var(--rolai-blue-primary);
-            box-shadow: none;
-            width: 48px;
-            height: 48px;
-            font-size: 20px;
-        }
-
-        .ecosystem-light-card h3 {
-            color: var(--rolai-text-headline);
-            font-size: 1.15rem;
-        }
-
-        .ecosystem-light-card strong {
-            color: var(--rolai-text-headline);
-            font-weight: 600;
-        }
-    </style>
-
-    <section id="who" class="rolai-section"
-        style="background: linear-gradient(180deg, var(--rolai-bg-main) 0%, #f4f7ff 100%); overflow: hidden; position: relative;">
-
-        <div class="rolai-container" style="position: relative; z-index: 3;">
-            <div class="section-header" style="position: relative; z-index: 10;">
-                <span class="rolai-eyebrow">Ecosystem</span>
-                <h2 class="rolai-h2">Who Should Join <span class="text-primary">M-Expert</span>?</h2>
-            </div>
-
-
-            <style>
-                .eco-card-new {
-                    border-radius: 20px;
-                    padding: 32px;
-                    display: flex;
-                    flex-direction: column;
-                    height: 100%;
-                    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-                    color: #ffffff;
-                    border: none;
-                }
-
-                .eco-card-new:hover {
-                    transform: translateY(-8px);
-                }
-
-                /* 3 Tones */
-                .eco-tone-1 {
-                    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
-                    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.3);
-                }
-
-                .eco-tone-2 {
-                    background: linear-gradient(135deg, #4A7DFF 0%, #2E5BFF 100%);
-                    box-shadow: 0 10px 30px rgba(46, 91, 255, 0.3);
-                }
-
-                .eco-tone-3 {
-                    background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);
-                    box-shadow: 0 10px 30px rgba(109, 40, 217, 0.3);
-                }
-
-                .eco-icon-top {
-                    width: 48px;
-                    height: 48px;
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    margin-bottom: 24px;
-                    font-size: 20px;
-                    background: rgba(255, 255, 255, 0.15);
-                    color: #ffffff;
-                }
-
-                .eco-title {
-                    font-size: 1.5rem;
-                    font-weight: 700;
-                    margin-bottom: 12px;
-                    color: #ffffff;
-                }
-
-                .eco-desc {
-                    font-size: 0.95rem;
-                    line-height: 1.6;
-                    color: rgba(255, 255, 255, 0.9);
-                    margin-bottom: 32px;
-                    flex-grow: 1;
-                }
-
-                .eco-footer {
-                    display: flex;
-                    justify-content: flex-end;
-                    align-items: center;
-                    margin-top: auto;
-                    border-top: 1px solid rgba(255, 255, 255, 0.15);
-                    padding-top: 20px;
-                }
-
-                .eco-btn {
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    background: #ffffff;
-                    font-weight: 600;
-                    font-size: 0.85rem;
-                    padding: 6px 16px 6px 6px;
-                    border-radius: 20px;
-                    text-decoration: none;
-                    transition: all 0.2s;
-                    border: none;
-                }
-
-                .eco-tone-1 .eco-btn {
-                    color: #0F172A;
-                }
-
-                .eco-tone-2 .eco-btn {
-                    color: #2E5BFF;
-                }
-
-                .eco-tone-3 .eco-btn {
-                    color: #6D28D9;
-                }
-
-                .eco-btn-icon {
-                    width: 24px;
-                    height: 24px;
-                    border-radius: 50%;
-                    color: #ffffff;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 10px;
-                }
-
-                .eco-tone-1 .eco-btn-icon {
-                    background: #0F172A;
-                }
-
-                .eco-tone-2 .eco-btn-icon {
-                    background: #2E5BFF;
-                }
-
-                .eco-tone-3 .eco-btn-icon {
-                    background: #6D28D9;
-                }
-            </style>
-            <div class="rolai-grid-3" style="position: relative; z-index: 10; align-items: stretch;">
-                <!-- Solution Provider -->
-                <div class="eco-card-new eco-tone-1">
-                    <div class="eco-icon-top"><i class="fa-solid fa-laptop-code"></i></div>
-                    <h3 class="eco-title">Solution Provider</h3>
-                    <p class="eco-desc">For global tech companies entering ASEAN. Your role includes conducting local
-                        PoC and providing expert sales support. Experience zero risk and achieve fast market entry.</p>
-                    <div class="eco-footer">
-                        <a href="#" class="eco-btn">
-                            <div class="eco-btn-icon"><i class="fa-solid fa-chevron-right"></i></div>
-                            <span>Learn More</span>
-                        </a>
-                    </div>
+        <!-- ============================================================
+     WHO SHOULD JOIN
+============================================================ -->
+        <section id="join" class="section-light who-section">
+            <div class="container">
+                <div class="section-header text-center reveal" style="margin-bottom: 48px;">
+                    <h2 data-en='Who Should Join <span style="color:var(--blue)">M-Expert?</span>'
+                        data-vi='Ai nên tham gia <span style="color:var(--blue)">M-Expert?</span>'>Who Should Join <span
+                            style="color:var(--blue)">M-Expert?</span></h2>
                 </div>
+                <div class="who-grid">
 
-                <!-- Local Expert -->
-                <div class="eco-card-new eco-tone-2">
-                    <div class="eco-icon-top"><i class="fa-solid fa-user-tie"></i></div>
-                    <h3 class="eco-title">Local Expert</h3>
-                    <p class="eco-desc">For professors, researchers, engineers, and regional advisors. Lead project
-                        execution and drive revenue generation while achieving career growth and community impact.</p>
-                    <div class="eco-footer">
-                        <a href="#" class="eco-btn">
-                            <div class="eco-btn-icon"><i class="fa-solid fa-chevron-right"></i></div>
-                            <span>Learn More</span>
-                        </a>
+                    <!-- Card 1: You sell tech -->
+                    <div class="who-card reveal">
+                        <h3 class="who-card-title">
+                            <span data-en="You " data-vi="Bạn ">You </span><strong data-en="sell tech."
+                                data-vi="bán công nghệ.">sell tech.</strong>
+                        </h3>
+                        <div class="who-card-img">
+                            <img src="Media/youselltech.png" alt="You sell tech" />
+                        </div>
+                        <ul class="who-card-list">
+                            <li data-en="You don't know who to work with in ASEAN"
+                                data-vi="Bạn không biết nên hợp tác với ai ở ASEAN">You don't know who to work with in
+                                ASEAN</li>
+                            <li data-en="You don't know which country to start in"
+                                data-vi="Bạn không biết nên bắt đầu từ quốc gia nào">You don't know which country to
+                                start in</li>
+                            <li data-en="You tried before and lost money" data-vi="Bạn đã thử trước đây và mất tiền">You
+                                tried before and lost money</li>
+                            <li data-en="You have no local team to help you"
+                                data-vi="Bạn không có đội ngũ địa phương để hỗ trợ">You have no local team to help you
+                            </li>
+                        </ul>
+                        <a href="mailto:hello@mekonglink.com?subject=Solution Provider" class="who-card-cta"
+                            data-en="Apply as Provider" data-vi="Đăng ký là Nhà cung cấp">Apply as Provider</a>
                     </div>
-                </div>
 
-                <!-- Solution Demander -->
-                <div class="eco-card-new eco-tone-3">
-                    <div class="eco-icon-top"><i class="fa-solid fa-building"></i></div>
-                    <h3 class="eco-title">Solution Demander</h3>
-                    <p class="eco-desc">For local firms or institutions facing industrial or social challenges.
-                        Facilitate the adoption of verified global tech solutions to unlock massive cost savings and
-                        productivity.</p>
-                    <div class="eco-footer">
-                        <a href="#" class="eco-btn">
-                            <div class="eco-btn-icon"><i class="fa-solid fa-chevron-right"></i></div>
-                            <span>Learn More</span>
-                        </a>
+                    <!-- Card 2: You know ASEAN -->
+                    <div class="who-card who-card--center reveal">
+                        <h3 class="who-card-title">
+                            <span data-en="You " data-vi="Bạn ">You </span><strong data-en="know ASEAN."
+                                data-vi="hiểu ASEAN.">know ASEAN.</strong>
+                        </h3>
+                        <div class="who-card-img">
+                            <img src="Media/youknowasean.png" alt="You know ASEAN" />
+                        </div>
+                        <ul class="who-card-list">
+                            <li data-en="You have skills but no one pays you for them"
+                                data-vi="Bạn có kỹ năng nhưng không ai trả tiền cho bạn">You have skills but no one pays
+                                you for them</li>
+                            <li data-en="You don't know how to find global companies"
+                                data-vi="Bạn không biết cách tìm công ty toàn cầu">You don't know how to find global
+                                companies</li>
+                            <li data-en="You don't know how to start earning"
+                                data-vi="Bạn không biết bắt đầu kiếm tiền như thế nào">You don't know how to start
+                                earning</li>
+                            <li data-en="Good deals happen but not with you"
+                                data-vi="Có những thỏa thuận tốt nhưng không phải với bạn">Good deals happen but not
+                                with you</li>
+                        </ul>
+                        <a href="mailto:hello@mekonglink.com?subject=Expert Registration" class="who-card-cta"
+                            data-en="Join as Expert" data-vi="Tham gia là Chuyên gia">Join as Expert</a>
                     </div>
+
+                    <!-- Card 3: You need tech -->
+                    <div class="who-card reveal">
+                        <h3 class="who-card-title">
+                            <span data-en="You " data-vi="Bạn ">You </span><strong data-en="need tech."
+                                data-vi="cần công nghệ.">need tech.</strong>
+                        </h3>
+                        <div class="who-card-img">
+                            <img src="Media/youneed%20tech.png" alt="You need tech" />
+                        </div>
+                        <ul class="who-card-list">
+                            <li data-en="You don't know which tech is right for you"
+                                data-vi="Bạn không biết công nghệ nào phù hợp với mình">You don't know which tech is
+                                right for you</li>
+                            <li data-en="Vendors talk big but don't deliver"
+                                data-vi="Nhà cung cấp nói lớn nhưng không thực hiện">Vendors talk big but don't deliver
+                            </li>
+                            <li data-en="You have no one to guide you" data-vi="Bạn không có ai hướng dẫn">You have no
+                                one to guide you</li>
+                            <li data-en="You spent money on tools that didn't work"
+                                data-vi="Bạn đã tốn tiền vào các công cụ không hiệu quả">You spent money on tools that
+                                didn't work</li>
+                        </ul>
+                        <a href="mailto:hello@mekonglink.com?subject=Solution Request" class="who-card-cta"
+                            data-en="Request a Solution" data-vi="Yêu cầu giải pháp">Request a Solution</a>
+                    </div>
+
                 </div>
             </div>
+        </section>
 
-            <!-- How We Work Section -->
-            <style>
-                .hww-section {
-                    margin-top: 100px;
-                }
-                .hww-grid {
-                    display: flex;
-                    align-items: flex-start;
-                    justify-content: space-between;
-                    gap: 12px;
-                    position: relative;
-                }
-                .hww-step {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    width: calc(20% - 24px);
-                    position: relative;
-                    z-index: 2;
-                }
-                .hww-icon-wrapper {
-                    position: relative;
-                    width: 100px;
-                    height: 100px;
-                    background-color: #ffffff;
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 40px;
-                    color: var(--rolai-text-headline);
-                    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-                    border: 2px solid rgba(46, 91, 255, 0.1);
-                    margin-bottom: 30px;
-                    transition: transform 0.3s ease, box-shadow 0.3s ease;
-                }
-                .hww-step:hover .hww-icon-wrapper {
-                    transform: translateY(-5px);
-                    box-shadow: 0 15px 35px rgba(46, 91, 255, 0.15);
-                    border-color: var(--rolai-blue-primary);
-                }
-                .hww-icon-wrapper::before {
-                    content: '';
-                    position: absolute;
-                    top: -14px;
-                    left: -14px;
-                    right: -14px;
-                    bottom: -14px;
-                    border-radius: 50%;
-                    border: 1px solid rgba(46, 91, 255, 0.15);
-                    z-index: -1;
-                    transition: all 0.3s ease;
-                }
-                .hww-step:hover .hww-icon-wrapper::before {
-                    background: rgba(46, 91, 255, 0.03);
-                    border-color: rgba(46, 91, 255, 0.3);
-                }
-                .hww-number {
-                    position: absolute;
-                    top: -5px;
-                    left: -5px;
-                    width: 32px;
-                    height: 32px;
-                    background-color: var(--rolai-blue-primary);
-                    color: #ffffff;
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 0.85rem;
-                    font-weight: 700;
-                    border: 3px solid #f4f7ff;
-                    box-shadow: 0 4px 10px rgba(46, 91, 255, 0.3);
-                }
-                .hww-card {
-                    background-color: #ffffff;
-                    border-radius: 16px;
-                    padding: 24px 20px;
-                    text-align: center;
-                    width: 100%;
-                    height: 100%;
-                    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-                    border: 1px solid rgba(0,0,0,0.03);
-                    transition: transform 0.3s ease;
-                }
-                .hww-step:hover .hww-card {
-                    transform: translateY(-5px);
-                    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-                }
-                .hww-card h4 {
-                    color: #0F172A;
-                    font-size: 0.9rem;
-                    font-weight: 800;
-                    margin-bottom: 12px;
-                    text-transform: uppercase;
-                    letter-spacing: 0.5px;
-                    line-height: 1.4;
-                }
-                .hww-card-divider {
-                    width: 24px;
-                    height: 3px;
-                    background-color: var(--rolai-blue-primary);
-                    margin: 0 auto 16px;
-                    border-radius: 2px;
-                }
-                .hww-card p {
-                    color: var(--rolai-text-body);
-                    font-size: 0.85rem;
-                    line-height: 1.6;
-                    margin: 0;
-                }
-                .hww-arrow {
-                    color: var(--rolai-blue-primary);
-                    font-size: 24px;
-                    margin-top: 38px; /* Vertically centered with 100px icon */
-                    flex-shrink: 0;
-                    opacity: 0.8;
-                }
-
-                @media (max-width: 1024px) {
-                    .hww-grid {
-                        flex-direction: column;
-                        align-items: center;
-                        gap: 30px;
-                    }
-                    .hww-step {
-                        width: 100%;
-                        max-width: 400px;
-                        flex-direction: row;
-                        align-items: center;
-                        gap: 24px;
-                    }
-                    .hww-icon-wrapper {
-                        margin-bottom: 0;
-                        flex-shrink: 0;
-                        width: 80px;
-                        height: 80px;
-                        font-size: 32px;
-                    }
-                    .hww-card {
-                        text-align: left;
-                    }
-                    .hww-card-divider {
-                        margin-left: 0;
-                    }
-                    .hww-arrow {
-                        transform: rotate(90deg);
-                        margin-top: 0;
-                    }
-                }
-                @media (max-width: 480px) {
-                    .hww-step {
-                        flex-direction: column;
-                        text-align: center;
-                    }
-                    .hww-card {
-                        text-align: center;
-                    }
-                    .hww-card-divider {
-                        margin: 0 auto 16px;
-                    }
-                }
-            </style>
-
-            <div class="hww-section">
+        <!-- ============================================================
+     HOW WE WORK — 5-step flow
+============================================================ -->
+        <section class="hww-section">
+            <div class="container">
+                <div class="section-header text-center reveal">
+                    <p class="hww-subheadline" data-en="No cold calls. No guessing. Just the right match."
+                        data-vi="Không gọi ngẫu nhiên. Không đoán mò. Chỉ là sự kết nối đúng đắn.">No cold calls. No
+                        guessing. Just the right match.</p>
+                    <h2 data-en='Five steps to your first <span style="color:var(--blue)">ASEAN deal</span>'
+                        data-vi='Năm bước đến thương vụ <span style="color:var(--blue)">ASEAN</span> đầu tiên của bạn'>
+                        Five steps to your first <span style="color:var(--blue)">ASEAN deal</span></h2>
+                </div>
                 <div class="hww-grid">
-                    <!-- Step 1 -->
-                    <div class="hww-step">
-                        <div class="hww-icon-wrapper">
-                            <div class="hww-number">01</div>
-                            <i class="fa-regular fa-address-card" style="color: #0F172A;"></i>
-                        </div>
-                        <div class="hww-card">
-                            <h4>Join & Create Profile</h4>
-                            <div class="hww-card-divider"></div>
-                            <p>Solution Providers, Local Experts, and Buyers create their profile and showcase capabilities on M-Expert.</p>
-                        </div>
+                    <div class="hww-step reveal">
+                        <span class="hww-num">01</span>
+                        <div class="hww-icon-wrap"><i class="fa-regular fa-address-card"></i></div>
+                        <h4 class="hww-title" data-en="Create your profile" data-vi="Tạo hồ sơ của bạn">Create your
+                            profile</h4>
+                        <p class="hww-desc" data-en="Tell us who you are." data-vi="Cho chúng tôi biết bạn là ai.">Tell
+                            us who you are.</p>
                     </div>
-                    <i class="fa-solid fa-arrow-right hww-arrow"></i>
+                    <i class="fa-solid fa-chevron-right hww-arrow"></i>
 
-                    <!-- Step 2 -->
-                    <div class="hww-step">
-                        <div class="hww-icon-wrapper">
-                            <div class="hww-number">02</div>
-                            <i class="fa-solid fa-users-viewfinder" style="color: #0F172A;"></i>
-                        </div>
-                        <div class="hww-card">
-                            <h4>Find & Discover</h4>
-                            <div class="hww-card-divider"></div>
-                            <p>Buyers find the right solutions. Solution Providers and Local Experts discover the right partners and opportunities.</p>
-                        </div>
+                    <div class="hww-step reveal">
+                        <span class="hww-num">02</span>
+                        <div class="hww-icon-wrap"><i class="fa-solid fa-users-viewfinder"></i></div>
+                        <h4 class="hww-title" data-en="Find your match" data-vi="Tìm đối tác phù hợp">Find your match
+                        </h4>
+                        <p class="hww-desc" data-en="We match you with the right people."
+                            data-vi="Chúng tôi kết nối bạn với đúng người.">We match you with the right people.</p>
                     </div>
-                    <i class="fa-solid fa-arrow-right hww-arrow"></i>
+                    <i class="fa-solid fa-chevron-right hww-arrow"></i>
 
-                    <!-- Step 3 -->
-                    <div class="hww-step">
-                        <div class="hww-icon-wrapper">
-                            <div class="hww-number">03</div>
-                            <i class="fa-solid fa-comments" style="color: var(--rolai-blue-primary);"></i>
-                        </div>
-                        <div class="hww-card">
-                            <h4>Connect & Engage</h4>
-                            <div class="hww-card-divider"></div>
-                            <p>Start real conversations, exchange requirements, and explore collaboration opportunities.</p>
-                        </div>
+                    <div class="hww-step reveal">
+                        <span class="hww-num">03</span>
+                        <div class="hww-icon-wrap"><i class="fa-regular fa-paper-plane"></i></div>
+                        <h4 class="hww-title" data-en="Start talking" data-vi="Bắt đầu trao đổi">Start talking</h4>
+                        <p class="hww-desc" data-en="Message your match directly."
+                            data-vi="Nhắn tin trực tiếp với đối tác.">Message your match directly.</p>
                     </div>
-                    <i class="fa-solid fa-arrow-right hww-arrow"></i>
+                    <i class="fa-solid fa-chevron-right hww-arrow"></i>
 
-                    <!-- Step 4 -->
-                    <div class="hww-step">
-                        <div class="hww-icon-wrapper">
-                            <div class="hww-number">04</div>
-                            <i class="fa-solid fa-puzzle-piece" style="color: #0F172A;"></i>
-                        </div>
-                        <div class="hww-card">
-                            <h4>Collaborate & Deliver</h4>
-                            <div class="hww-card-divider"></div>
-                            <p>Work together across borders with the support of local expertise to implement solutions and create impact.</p>
-                        </div>
-                    </div>
-                    <i class="fa-solid fa-arrow-right hww-arrow"></i>
-
-                    <!-- Step 5 -->
-                    <div class="hww-step">
-                        <div class="hww-icon-wrapper">
-                            <div class="hww-number">05</div>
-                            <i class="fa-solid fa-chart-line" style="color: #0F172A;"></i>
-                        </div>
-                        <div class="hww-card">
-                            <h4>Grow & Succeed</h4>
-                            <div class="hww-card-divider"></div>
-                            <p>Build long-term partnerships, expand across ASEAN, and unlock sustainable business growth.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SUCCESS: Success Stories -->
-    <style>
-        .case-card {
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            cursor: pointer;
-        }
-
-        .case-card:hover {
-            transform: translateY(-8px);
-        }
-
-
-        .case-img-wrap img {
-            transition: transform 0.7s ease;
-        }
-
-        .case-card:hover .case-img-wrap img {
-            transform: scale(1.05);
-        }
-
-        @media (max-width: 768px) {
-            .success-header-row {
-                flex-direction: column;
-                align-items: flex-start !important;
-                gap: 24px;
-            }
-        }
-    </style>
-    <section id="success" class="rolai-section"
-        style="background-color: #ffffff; padding-top: 100px; padding-bottom: 80px;">
-        <div class="rolai-container">
-            <!-- Header Row -->
-            <div class="success-header-row"
-                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 60px; flex-wrap: wrap; gap: 20px;">
-                <h2 class="rolai-h2" style="margin: 0;">
-                    Our <span class="text-primary">Success Stories</span>
-                </h2>
-                <a href="#" class="rolai-btn rolai-btn-primary">
-                    See All Case Studies
-                </a>
-            </div>
-
-            <!-- Grid -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px;">
-                <!-- Case 1 -->
-                <div class="case-card" style="display: flex; flex-direction: column; gap: 24px;">
-                    <div class="case-img-wrap"
-                        style="width: 100%; aspect-ratio: 4/3; border-radius: 32px; overflow: hidden; border: 2px solid var(--rolai-blue-bg); position: relative;">
-                        <!-- Placeholder matching prompt's aesthetic -->
-                        <img src="Media/Leaf.png" alt="Case 1" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-
-                    <div class="case-content" style="display: flex; flex-direction: column; gap: 16px;">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;">
-                            <h3 class="rolai-h3" style="margin: 0; font-size: 1.45rem;">"Leaf" (AIoT Energy Management)
-                            </h3>
-                        </div>
-
-                        <div
-                            style="color: var(--rolai-text-body); font-size: 0.95rem; margin: 0; line-height: 1.6; display: flex; flex-direction: column; gap: 8px;">
-                            <p style="margin: 0;"><strong>Problem:</strong> High electricity costs for 24-hour retail
-                                franchises in Vietnam.</p>
-                            <p style="margin: 0;"><strong>Action:</strong> Tested "Leaf" in the local environment with
-                                M-Expert experts in Ho Chi Minh City.</p>
-                            <p style="margin: 0;"><strong>Result:</strong> Verified 18% energy savings through our
-                                standardized "Trust Service."</p>
-                            <p style="margin: 0;"><strong>Expansion:</strong> Now scaling to other cities in Vietnam and
-                                across ASEAN (Thailand, Indonesia, Philippines).</p>
-                        </div>
-
-                        <!-- Tags -->
-                        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px;">
-                            <span
-                                style="background-color: var(--rolai-blue-bg); color: var(--rolai-blue-primary); padding: 6px 14px; border-radius: 100px; font-weight: 600; font-size: 0.85rem;">18%
-                                Energy Savings</span>
-                            <span
-                                style="background-color: var(--rolai-blue-primary); color: #ffffff; padding: 6px 14px; border-radius: 100px; font-weight: 600; font-size: 0.85rem;">Vietnam
-                                & ASEAN</span>
-                            <span
-                                style="background-color: #f1f5f9; color: var(--rolai-text-body); padding: 6px 14px; border-radius: 100px; font-weight: 600; font-size: 0.85rem;">Zero
-                                Risk Entry</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Case 2 -->
-                <div class="case-card" style="display: flex; flex-direction: column; gap: 24px;">
-                    <div class="case-img-wrap"
-                        style="width: 100%; aspect-ratio: 4/3; border-radius: 32px; overflow: hidden; border: 2px solid transparent; position: relative;">
-                        <img src="Media/vegetationmat.png" alt="Case 2"
-                            style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-
-                    <div class="case-content" style="display: flex; flex-direction: column; gap: 16px;">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;">
-                            <h3 class="rolai-h3" style="margin: 0; font-size: 1.45rem;">"Vegetation Mat" in Dong Thap
-                            </h3>
-                        </div>
-
-                        <p style="color: var(--rolai-text-body); font-size: 1rem; margin: 0; line-height: 1.6;">
-                            Deployed advanced vegetation mat technology in local environments to solve erosion and soil
-                            quality issues directly.
+                    <div class="hww-step reveal">
+                        <span class="hww-num">04</span>
+                        <div class="hww-icon-wrap"><i class="fa-regular fa-handshake"></i></div>
+                        <h4 class="hww-title" data-en="Work together" data-vi="Làm việc cùng nhau">Work together</h4>
+                        <p class="hww-desc" data-en="Start your project." data-vi="Khởi động dự án.">Start your project.
                         </p>
-
-                        <!-- Tags -->
-                        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px;">
-                            <span
-                                style="background-color: var(--rolai-blue-bg); color: var(--rolai-blue-primary); padding: 6px 14px; border-radius: 100px; font-weight: 600; font-size: 0.85rem;">Local
-                                Validation</span>
-                            <span
-                                style="background-color: var(--rolai-blue-primary); color: #ffffff; padding: 6px 14px; border-radius: 100px; font-weight: 600; font-size: 0.85rem;">Dong
-                                Thap Province</span>
-                            <span
-                                style="background-color: #f1f5f9; color: var(--rolai-text-body); padding: 6px 14px; border-radius: 100px; font-weight: 600; font-size: 0.85rem;">Cost
-                                Efficient</span>
-                        </div>
                     </div>
-                </div>
+                    <i class="fa-solid fa-chevron-right hww-arrow"></i>
 
-                <!-- Case 3: Empty State -->
-                <div class="case-card" style="display: flex; flex-direction: column; gap: 24px;">
-                    <div class="case-img-wrap"
-                        style="width: 100%; aspect-ratio: 4/3; border-radius: 32px; overflow: hidden; border: 2px dashed var(--rolai-blue-primary); background-color: var(--rolai-blue-bg); display: flex; align-items: center; justify-content: center; position: relative;">
-                        <i class="fa-solid fa-plus"
-                            style="font-size: 3rem; color: var(--rolai-blue-primary); opacity: 0.6;"></i>
-                    </div>
-
-                    <div class="case-content" style="display: flex; flex-direction: column; gap: 16px;">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;">
-                            <h3 class="rolai-h3" style="margin: 0; font-size: 1.45rem;">Your Success Story Here</h3>
-                        </div>
-
-                        <p style="color: var(--rolai-text-body); font-size: 1rem; margin: 0; line-height: 1.6;">
-                            Become the next success case in ASEAN. Validate and deploy your technology with M-Expert's
-                            TaaS engine.
+                    <div class="hww-step reveal">
+                        <span class="hww-num">05</span>
+                        <div class="hww-icon-wrap"><i class="fa-solid fa-chart-line"></i></div>
+                        <h4 class="hww-title" data-en="Grow across ASEAN" data-vi="Mở rộng khắp ASEAN">Grow across ASEAN
+                        </h4>
+                        <p class="hww-desc" data-en="Close your first deal. Build trust."
+                            data-vi="Chốt thương vụ đầu tiên. Xây dựng niềm tin.">Close your first deal. Build trust.
                         </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                        <!-- Tags -->
-                        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px;">
-                            <span
-                                style="background-color: var(--rolai-blue-bg); color: var(--rolai-blue-primary); padding: 6px 14px; border-radius: 100px; font-weight: 600; font-size: 0.85rem;">Join
-                                Ecosystem</span>
-                            <span
-                                style="background-color: #f1f5f9; color: var(--rolai-text-body); padding: 6px 14px; border-radius: 100px; font-weight: 600; font-size: 0.85rem;">Start
-                                Now</span>
+        <!-- ============================================================
+     SUCCESS STORIES
+============================================================ -->
+        <section id="stories" class="section-light" style="padding-bottom:0px;">
+            <div class="container">
+                <div class="section-header text-center reveal" style="margin-bottom:56px;">
+                    <h2 data-en='Our <span style="color:var(--blue)">Success Stories</span>'
+                        data-vi='Câu chuyện <span style="color:var(--blue)">thành công</span> của chúng tôi'>Our <span
+                            style="color:var(--blue)">Success Stories</span></h2>
+                </div>
+                <div class="story-grid">
+
+                    <!-- Story 1 -->
+                    <div class="story-item reveal">
+                        <div class="story-card">
+                            <img src="Media/Leaf.webp" alt="Leaf AIoT" class="story-img" />
+                            <div class="story-overlay">
+                                <span class="story-tag" data-en="Energy · Vietnam"
+                                    data-vi="Năng lượng · Việt Nam">Energy · Vietnam</span>
+                                <div class="story-play"><i class="fa-solid fa-play"></i></div>
+                            </div>
+                        </div>
+                        <div class="story-body">
+                            <h3 data-en='"Leaf": AIoT Energy Management' data-vi='"Leaf": Quản lý năng lượng AIoT'>
+                                "Leaf": AIoT Energy Management</h3>
+                            <p data-en="Verified 18% energy savings for 24-hour retail chains. Now scaling across ASEAN."
+                                data-vi="Xác minh tiết kiệm 18% điện năng cho chuỗi bán lẻ 24 giờ. Đang mở rộng trên toàn ASEAN.">
+                                Verified 18% energy savings for 24-hour retail chains. Now scaling across ASEAN.</p>
+                            <a href="#cta" class="story-link" data-en="check out their business →"
+                                data-vi="xem doanh nghiệp của họ →">check out their business →</a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- GLOBAL PARTNERS -->
-    <section id="partners" class="rolai-section" style="padding-top: 40px;">
-        <div class="rolai-container" style="text-align: center;">
-            <h2 class="rolai-h2" style="font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 16px;">M-Expert <span
-                    class="text-primary">Global Partners</span></h2>
-            <p class="rolai-text-lead" style="margin-bottom: 40px;">ASEAN’s top universities and institutions are with
-                M-Expert.</p>
-
-            <div class="logo-marquee-pill" style="margin-top: 60px;">
-                <!-- Decorative dashes -->
-                <div class="pill-dash-top"></div>
-                <div class="pill-dash-bottom"></div>
-
-                <!-- Center Crescent -->
-                <div class="logo-center-ring"></div>
-
-                <!-- Sliding Items -->
-                <div class="marquee-track">
-                    <div class="logo-bubble item-1"><img src="Media/logo/Chiang_mai_university_logo.png.webp" alt="CMU">
+                    <!-- Story 2 -->
+                    <div class="story-item reveal">
+                        <div class="story-card">
+                            <img src="Media/vegetationmat.webp" alt="Vegetation Mat" class="story-img" />
+                            <div class="story-overlay">
+                                <span class="story-tag" data-en="AgriTech · Mekong Delta"
+                                    data-vi="Nông nghiệp · Đồng bằng sông Cửu Long">AgriTech · Mekong Delta</span>
+                                <div class="story-play"><i class="fa-solid fa-play"></i></div>
+                            </div>
+                        </div>
+                        <div class="story-body">
+                            <h3 data-en='"Vegetation Mat": Dong Thap' data-vi='"Thảm thực vật": Đồng Tháp'>"Vegetation
+                                Mat": Dong Thap</h3>
+                            <p data-en="100% local regulatory compliance. Framework expanding in the Mekong Delta."
+                                data-vi="100% tuân thủ quy định địa phương. Khung đang mở rộng tại Đồng bằng sông Cửu Long.">
+                                100% local regulatory compliance. Framework expanding in the Mekong Delta.</p>
+                            <a href="#cta" class="story-link" data-en="check out their business →"
+                                data-vi="xem doanh nghiệp của họ →">check out their business →</a>
+                        </div>
                     </div>
-                    <div class="logo-bubble item-2"><img src="Media/logo/RUPP_logo.png.webp" alt="RUPP"></div>
-                    <div class="logo-bubble item-3"><img src="Media/logo/peking-university-ss.x447b17c4.png.webp"
-                            alt="PKU"></div>
-                    <div class="logo-bubble item-4"><img src="Media/logo/logo_sciencepark.png.webp" alt="Science Park">
+
+                    <!-- Story 3: Placeholder -->
+                    <div class="story-item reveal">
+                        <div class="story-card story-card--placeholder">
+                            <div class="story-overlay">
+                                <span class="story-tag" data-en="Your Industry · ASEAN"
+                                    data-vi="Ngành của bạn · ASEAN">Your Industry · ASEAN</span>
+                                <div class="story-play"><i class="fa-solid fa-plus"></i></div>
+                            </div>
+                        </div>
+                        <div class="story-body">
+                            <h3 data-en="Your Success Story Here" data-vi="Câu chuyện thành công của bạn">Your Success
+                                Story Here</h3>
+                            <p data-en="Become the next M-Expert case study. Validate and scale your technology across ASEAN."
+                                data-vi="Trở thành case study M-Expert tiếp theo. Kiểm chứng và mở rộng công nghệ của bạn trên toàn ASEAN.">
+                                Become the next M-Expert case study. Validate and scale your technology across ASEAN.
+                            </p>
+                            <a href="#cta" class="story-link" data-en="start your story →"
+                                data-vi="bắt đầu câu chuyện của bạn →">start your story →</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+     PARTNERS3 Labeled Marquee Pills
+============================================================ -->
+        <section id="partners" class="marquee-section">
+            <div class="container">
+                <div class="section-header text-center reveal" style="margin-bottom:48px;">
+                    <h2 data-en='ASEAN <span style="color:var(--blue)">Partners</span>'
+                        data-vi='Đối tác <span style="color:var(--blue)">ASEAN</span>'>ASEAN <span
+                            style="color:var(--blue)">Partners</span></h2>
+                    <p class="section-subtitle"
+                        data-en="Connected to the best institutions across ASEAN.<br>Top universities, tech hubs, and organizations that are ready to support your business."
+                        data-vi="Kết nối với những tổ chức hàng đầu khắp ASEAN.<br>Các trường đại học, trung tâm công nghệ và tổ chức sẵn sàng hỗ trợ doanh nghiệp của bạn.">
+                        Connected to the best institutions across ASEAN.<br>Top universities, tech hubs, and
+                        organizations that are ready to support your business.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Row 1: Organization logos left to right (18 logos, 108s) -->
+            <div class="logo-scroll">
+                <div class="logo-scroll-track1">
+                    <div class="logo-scroll-item"><img src="Media/Logo/organization/AMATA%20Corporation%20PCL.webp"
+                            alt="AMATA Corporation" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/organization/Business%20Startup%20Support%20Center.webp"
+                            alt="Business Startup Support Center" /></div>
+                    <div class="logo-scroll-item"><img src="Media/Logo/organization/Danang%20Hi-Tech%20Park.webp"
+                            alt="Danang Hi-Tech Park" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/organization/HANOI%20Young%20Business%20Association.webp" alt="Hanoi YBA" />
+                    </div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/organization/HCM%20Centers%20for%20Supporting%20Industry%20Development.webp"
+                            alt="HCM Industry Support" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/organization/HCM%20Union%20of%20Science%20and%20Technology%20Associations.webp"
+                            alt="HCM USTA" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/organization/HCM%20Young%20Business%20Association.webp" alt="HCM YBA" />
+                    </div>
+                    <div class="logo-scroll-item"><img src="Media/Logo/organization/Hoa%20Lac%20Hi-Tech%20Park.webp"
+                            alt="Hoa Lac Hi-Tech Park" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/organization/Quality%20Assurance%20and%20Testing%20Center%203.webp"
+                            alt="QA Testing Center 3" /></div>
+                    <div class="logo-scroll-item"><img src="Media/Logo/organization/Saigon%20Hi-Tech%20Park.webp"
+                            alt="Saigon Hi-Tech Park" /></div>
+                    <div class="logo-scroll-item"><img src="Media/Logo/organization/Saigon%20Innovation%20Hub.webp"
+                            alt="Saigon Innovation Hub" /></div>
+                    <div class="logo-scroll-item"><img src="Media/Logo/organization/Software%20Park%20Thailand.webp"
+                            alt="Software Park Thailand" /></div>
+                    <div class="logo-scroll-item"><img src="Media/Logo/organization/Startup%20Vietnam%20Foundation.webp"
+                            alt="Startup Vietnam Foundation" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/organization/Vietnam%20Academy%20of%20Science%20and%20Technology.webp"
+                            alt="VAST" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/organization/Vietnam%20Textile%20%26%20Apparel%20Association.webp"
+                            alt="Vietnam Textile" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/organization/Vietnam%20Union%20of%20Science%20and%20Technology%20Associations.webp"
+                            alt="VUSTA" /></div>
+                    <div class="logo-scroll-item"><img src="Media/Logo/organization/Vinacontrol%20Haiphong.webp"
+                            alt="Vinacontrol Haiphong" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/organization/VNU-HCM%20Information%20Technology%20Park.webp"
+                            alt="VNU-HCM IT Park" /></div>
+                    <!-- duplicate for seamless loop -->
+                    <div class="logo-scroll-item"><img src="Media/Logo/organization/AMATA%20Corporation%20PCL.webp"
+                            alt="AMATA Corporation" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/organization/Business%20Startup%20Support%20Center.webp"
+                            alt="Business Startup Support Center" /></div>
+                    <div class="logo-scroll-item"><img src="Media/Logo/organization/Danang%20Hi-Tech%20Park.webp"
+                            alt="Danang Hi-Tech Park" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/organization/HANOI%20Young%20Business%20Association.webp" alt="Hanoi YBA" />
+                    </div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/organization/HCM%20Centers%20for%20Supporting%20Industry%20Development.webp"
+                            alt="HCM Industry Support" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/organization/HCM%20Union%20of%20Science%20and%20Technology%20Associations.webp"
+                            alt="HCM USTA" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/organization/HCM%20Young%20Business%20Association.webp" alt="HCM YBA" />
+                    </div>
+                    <div class="logo-scroll-item"><img src="Media/Logo/organization/Hoa%20Lac%20Hi-Tech%20Park.webp"
+                            alt="Hoa Lac Hi-Tech Park" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/organization/Quality%20Assurance%20and%20Testing%20Center%203.webp"
+                            alt="QA Testing Center 3" /></div>
+                    <div class="logo-scroll-item"><img src="Media/Logo/organization/Saigon%20Hi-Tech%20Park.webp"
+                            alt="Saigon Hi-Tech Park" /></div>
+                    <div class="logo-scroll-item"><img src="Media/Logo/organization/Saigon%20Innovation%20Hub.webp"
+                            alt="Saigon Innovation Hub" /></div>
+                    <div class="logo-scroll-item"><img src="Media/Logo/organization/Software%20Park%20Thailand.webp"
+                            alt="Software Park Thailand" /></div>
+                    <div class="logo-scroll-item"><img src="Media/Logo/organization/Startup%20Vietnam%20Foundation.webp"
+                            alt="Startup Vietnam Foundation" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/organization/Vietnam%20Academy%20of%20Science%20and%20Technology.webp"
+                            alt="VAST" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/organization/Vietnam%20Textile%20%26%20Apparel%20Association.webp"
+                            alt="Vietnam Textile" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/organization/Vietnam%20Union%20of%20Science%20and%20Technology%20Associations.webp"
+                            alt="VUSTA" /></div>
+                    <div class="logo-scroll-item"><img src="Media/Logo/organization/Vinacontrol%20Haiphong.webp"
+                            alt="Vinacontrol Haiphong" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/organization/VNU-HCM%20Information%20Technology%20Park.webp"
+                            alt="VNU-HCM IT Park" /></div>
+                </div>
+            </div>
+
+            <!-- Row 2: University logos right to left (9 logos, 54s) -->
+            <div class="logo-scroll logo-scroll--reverse">
+                <div class="logo-scroll-track2">
+                    <div class="logo-scroll-item"><img src="Media/Logo/University/MEKONG%20UNIVERSITY.webp"
+                            alt="Mekong University" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/University/Ho%20Chi%20Minh%20City%20University%20of%20Natural%20Resources%20and%20Environment%20%28HCMUNRE%29..webp"
+                            alt="HCMUNRE" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/University/Ho%20Chi%20Minh%20University%20of%20Science%20and%20Technology.webp"
+                            alt="HCMUST" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/University/Hoa%20Sen%20University%20%28HSU%29.webp"
+                            alt="Hoa Sen University" /></div>
+                    <div class="logo-scroll-item"><img src="Media/Logo/University/HONG%20BANG%20UNIVERSITY.webp"
+                            alt="Hong Bang University" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/University/Nguyen%20Tat%20Thanh%20Univeristy.webp"
+                            alt="Nguyen Tat Thanh University" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/University/Thuyloi%20University%20Southern%20Campus.webp"
+                            alt="Thuyloi University" /></div>
+                    <div class="logo-scroll-item"><img src="Media/Logo/University/TIEN%20GIANG%20UNIVERSITY.webp"
+                            alt="Tien Giang University" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/University/University%20of%20Economics%20and%20Finance%20Ho%20Chi%20Minh%20City%20%28UEF%29..webp"
+                            alt="UEF" /></div>
+                    <!-- duplicate for seamless loop -->
+                    <div class="logo-scroll-item"><img src="Media/Logo/University/MEKONG%20UNIVERSITY.webp"
+                            alt="Mekong University" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/University/Ho%20Chi%20Minh%20City%20University%20of%20Natural%20Resources%20and%20Environment%20%28HCMUNRE%29..webp"
+                            alt="HCMUNRE" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/University/Ho%20Chi%20Minh%20University%20of%20Science%20and%20Technology.webp"
+                            alt="HCMUST" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/University/Hoa%20Sen%20University%20%28HSU%29.webp"
+                            alt="Hoa Sen University" /></div>
+                    <div class="logo-scroll-item"><img src="Media/Logo/University/HONG%20BANG%20UNIVERSITY.webp"
+                            alt="Hong Bang University" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/University/Nguyen%20Tat%20Thanh%20Univeristy.webp"
+                            alt="Nguyen Tat Thanh University" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/University/Thuyloi%20University%20Southern%20Campus.webp"
+                            alt="Thuyloi University" /></div>
+                    <div class="logo-scroll-item"><img src="Media/Logo/University/TIEN%20GIANG%20UNIVERSITY.webp"
+                            alt="Tien Giang University" /></div>
+                    <div class="logo-scroll-item"><img
+                            src="Media/Logo/University/University%20of%20Economics%20and%20Finance%20Ho%20Chi%20Minh%20City%20%28UEF%29..webp"
+                            alt="UEF" /></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+     FINAL CTA
+============================================================ -->
+        <section id="cta" class="cta-section">
+            <div class="cta-glow"></div>
+            <div class="container text-center" style="position:relative; z-index:2;">
+                <h2 data-en='Join <span style="color:var(--blue)">M-Expert</span>'
+                    data-vi='Tham gia <span style="color:var(--blue)">M-Expert</span>'>Join <span
+                        style="color:var(--blue)">M-Expert</span></h2>
+                <p class="lead" data-en="Choose your role to get started." data-vi="Chọn vai trò của bạn để bắt đầu.">
+                    Choose your role to get started.</p>
+                <div class="cta-grid">
+                    <div class="cta-card reveal">
+                        <h3 data-en="Join as a Solution Provider" data-vi="Tham gia với tư cách Nhà cung cấp giải pháp">
+                            Join as a Solution Provider</h3>
+                        <p data-en="Make your technology the standard in the ASEAN market."
+                            data-vi="Biến công nghệ của bạn thành tiêu chuẩn tại thị trường ASEAN.">Make your technology
+                            the standard in the ASEAN market.</p>
+                        <a href="mailto:hello@mekonglink.com?subject=Solution Provider Application"
+                            class="btn btn-primary">
+                            <span data-en="Apply Now" data-vi="Đăng ký ngay">Apply Now</span> <i
+                                class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="cta-card featured reveal">
+                        <h3 data-en="Join as a Local Expert" data-vi="Tham gia với tư cách Chuyên gia Địa phương">Join
+                            as a Local Expert</h3>
+                        <p data-en="Become the execution commander of global projects."
+                            data-vi="Trở thành chỉ huy thực thi của các dự án toàn cầu.">Become the execution commander
+                            of global projects.</p>
+                        <a href="mailto:hello@mekonglink.com?subject=Expert Registration" class="btn btn-primary">
+                            <span data-en="Register Expert" data-vi="Đăng ký chuyên gia">Register Expert</span> <i
+                                class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="cta-card reveal">
+                        <h3 data-en="Join as a Solution Demander" data-vi="Tham gia với tư cách Người cần giải pháp">
+                            Join as a Solution Demander</h3>
+                        <p data-en="Request a solution for your industrial or regional problems."
+                            data-vi="Yêu cầu giải pháp cho các vấn đề công nghiệp hoặc khu vực của bạn.">Request a
+                            solution for your industrial or regional problems.</p>
+                        <a href="mailto:hello@mekonglink.com?subject=Solution Request" class="btn btn-primary">
+                            <span data-en="Submit Request" data-vi="Gửi yêu cầu">Submit Request</span> <i
+                                class="fa-solid fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ACTION: Final CTA -->
-    <section id="cta" class="rolai-section" style="padding-top: 80px; padding-bottom: 80px;">
-        <div class="rolai-container" style="text-align: center;">
-            <h2 class="rolai-h2">Join M-Expert</h2>
-            <p class="rolai-text-lead" style="margin-bottom: 40px;">Choose your role to start.</p>
-
-            <div class="rolai-grid-3" style="text-align: left; gap: 24px;">
-                <div class="rolai-card" style="display: flex; flex-direction: column; height: 100%;">
-                    <h3 class="rolai-h3" style="font-size: 1.25rem;">Join as a Solution Provider</h3>
-                    <p style="color: var(--rolai-text-body); flex-grow: 1; margin-bottom: 24px;">Make your technology
-                        the standard in the ASEAN market.</p>
-                    <a href="#" class="rolai-btn rolai-btn-primary"
-                        style="width: 100%; justify-content: center;">Register Now</a>
+        <!-- ============================================================
+     FAQ
+============================================================ -->
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <div class="section-header text-center reveal">
+                    <h2 data-en='Common Questions About <span style="color:var(--blue)">TaaS</span>'
+                        data-vi='Câu hỏi thường gặp về <span style="color:var(--blue)">TaaS</span>'>Common Questions
+                        About <span style="color:var(--blue)">TaaS</span></h2>
                 </div>
-
-                <div class="rolai-card"
-                    style="display: flex; flex-direction: column; height: 100%; border: 2px solid var(--rolai-blue-primary);">
-                    <h3 class="rolai-h3" style="font-size: 1.25rem;">Join as a Local Expert</h3>
-                    <p style="color: var(--rolai-text-body); flex-grow: 1; margin-bottom: 24px;">Become the execution
-                        commander of global projects.</p>
-                    <a href="#" class="rolai-btn rolai-btn-primary"
-                        style="width: 100%; justify-content: center;">Register Expert</a>
+                <div class="faq-wrap">
+                    <details class="reveal">
+                        <summary data-en='What is "Trust as a Service" exactly?' data-vi='"Dịch vụ Niềm tin" là gì?'>
+                            What is "Trust as a Service" exactly?</summary>
+                        <div class="faq-answer"
+                            data-en="TaaS is our standardized framework that leverages local universities and experts to validate your technology in real ASEAN operating conditions, reducing risks and building confidence for local buyers."
+                            data-vi="TaaS là khung tiêu chuẩn hóa của chúng tôi sử dụng các trường đại học và chuyên gia địa phương để kiểm chứng công nghệ của bạn trong điều kiện vận hành ASEAN thực tế, giảm thiểu rủi ro và xây dựng sự tin tưởng cho người mua địa phương.">
+                            TaaS is our standardized framework that leverages local universities and experts to validate
+                            your technology in real ASEAN operating conditions, reducing risks and building confidence
+                            for local buyers.</div>
+                    </details>
+                    <details class="reveal">
+                        <summary data-en="How is M-Expert different from GLG, Upwork, or a consulting firm?"
+                            data-vi="M-Expert khác gì so với GLG, Upwork hay công ty tư vấn?">How is M-Expert different
+                            from GLG, Upwork, or a consulting firm?</summary>
+                        <div class="faq-answer"
+                            data-en="Unlike advisory networks, M-Expert's local experts and university partners directly manage and execute projects on the ground, delivering hands-on technical validation and implementation."
+                            data-vi="Khác với các mạng lưới tư vấn, các chuyên gia địa phương và đối tác đại học của M-Expert trực tiếp quản lý và thực thi dự án tại thực địa, cung cấp kiểm chứng kỹ thuật và triển khai thực tế.">
+                            Unlike advisory networks, M-Expert's local experts and university partners directly manage
+                            and execute projects on the ground, delivering hands-on technical validation and
+                            implementation.</div>
+                    </details>
+                    <details class="reveal">
+                        <summary data-en="How long does a typical Living Lab validation take?"
+                            data-vi="Một quy trình kiểm chứng Living Lab điển hình mất bao lâu?">How long does a typical
+                            Living Lab validation take?</summary>
+                        <div class="faq-answer"
+                            data-en="Validation periods vary by project complexity, but typically range from 3 to 6 months to ensure comprehensive testing in local conditions."
+                            data-vi="Thời gian kiểm chứng thay đổi tùy theo độ phức tạp của dự án, nhưng thường từ 3 đến 6 tháng để đảm bảo kiểm tra toàn diện trong điều kiện địa phương.">
+                            Validation periods vary by project complexity, but typically range from 3 to 6 months to
+                            ensure comprehensive testing in local conditions.</div>
+                    </details>
+                    <details class="reveal">
+                        <summary data-en="What is the cost?" data-vi="Chi phí là bao nhiêu?">What is the cost?</summary>
+                        <div class="faq-answer"
+                            data-en="Costs are structured based on the specific scope of validation and local expert involvement. We provide transparent pricing models during our initial consultation."
+                            data-vi="Chi phí được cấu trúc dựa trên phạm vi kiểm chứng cụ thể và mức độ tham gia của chuyên gia địa phương. Chúng tôi cung cấp mô hình định giá minh bạch trong buổi tư vấn ban đầu.">
+                            Costs are structured based on the specific scope of validation and local expert involvement.
+                            We provide transparent pricing models during our initial consultation.</div>
+                    </details>
+                    <details class="reveal">
+                        <summary data-en="Which ASEAN countries are covered?"
+                            data-vi="Những quốc gia ASEAN nào được phủ sóng?">Which ASEAN countries are covered?
+                        </summary>
+                        <div class="faq-answer"
+                            data-en="We currently focus on Vietnam, Thailand, Indonesia, and the Philippines, with expanding networks across the entire ASEAN region."
+                            data-vi="Chúng tôi hiện tập trung vào Việt Nam, Thái Lan, Indonesia và Philippines, với mạng lưới đang mở rộng trên toàn khu vực ASEAN.">
+                            We currently focus on Vietnam, Thailand, Indonesia, and the Philippines, with expanding
+                            networks across the entire ASEAN region.</div>
+                    </details>
+                    <details class="reveal">
+                        <summary data-en="How are local experts vetted?"
+                            data-vi="Các chuyên gia địa phương được kiểm tra như thế nào?">How are local experts vetted?
+                        </summary>
+                        <div class="faq-answer"
+                            data-en="Our local experts are rigorously selected from top ASEAN universities, research institutions, and industry leaders with proven track records in technical execution and project management."
+                            data-vi="Các chuyên gia địa phương của chúng tôi được tuyển chọn nghiêm ngặt từ các trường đại học hàng đầu ASEAN, viện nghiên cứu và lãnh đạo ngành với hồ sơ đã được chứng minh trong thực thi kỹ thuật và quản lý dự án.">
+                            Our local experts are rigorously selected from top ASEAN universities, research
+                            institutions, and industry leaders with proven track records in technical execution and
+                            project management.</div>
+                    </details>
                 </div>
-
-                <div class="rolai-card" style="display: flex; flex-direction: column; height: 100%;">
-                    <h3 class="rolai-h3" style="font-size: 1.25rem;">Join as a Solution Demander</h3>
-                    <p style="color: var(--rolai-text-body); flex-grow: 1; margin-bottom: 24px;">Request a solution for
-                        your industrial or regional problems.</p>
-                    <a href="#" class="rolai-btn rolai-btn-secondary"
-                        style="width: 100%; justify-content: center;">Submit Request</a>
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- FAQ: FAQ of M-Expert -->
-    <style>
-        .faq-accordion {
-            max-width: 800px;
-            margin: 0 auto;
-            border-top: 1px solid rgba(46, 91, 255, 0.15);
-        }
+    </main>
 
-        .faq-accordion details {
-            border-bottom: 1px solid rgba(46, 91, 255, 0.15);
-        }
-
-        .faq-accordion summary {
-            padding: 24px 0;
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--rolai-text-headline);
-            cursor: pointer;
-            list-style: none;
-            /* Hide default arrow */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .faq-accordion summary::-webkit-details-marker {
-            display: none;
-            /* Hide for Safari */
-        }
-
-        .faq-accordion summary::after {
-            content: '\f078';
-            /* fa-chevron-down */
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            color: var(--rolai-blue-primary);
-            font-size: 0.9rem;
-            transition: transform 0.3s ease;
-        }
-
-        .faq-accordion details[open] summary::after {
-            transform: rotate(180deg);
-        }
-
-        .faq-accordion .faq-content {
-            padding-bottom: 24px;
-            font-size: 1rem;
-            color: var(--rolai-text-body);
-            line-height: 1.6;
-        }
-    </style>
-    <section id="faq" class="rolai-section" style="background-color: #ffffff; padding-top: 60px; padding-bottom: 80px;">
-        <div class="rolai-container">
-            <div class="section-header text-center" style="margin-bottom: 40px;">
-                <span class="rolai-eyebrow">FAQ</span>
-                <h2 class="rolai-h2">Common questions about TaaS</h2>
+    <!-- ============================================================
+     FOOTER
+============================================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>M-Expert</span>
             </div>
-
-            <div class="faq-accordion">
-                <details>
-                    <summary>What is "Trust as a Service" exactly?</summary>
-                    <div class="faq-content">TaaS is our standardized framework that leverages local universities and
-                        experts to validate your technology in real ASEAN operating conditions, reducing risks and
-                        building confidence for local buyers.</div>
-                </details>
-                <details>
-                    <summary>How is M-Expert different from GLG, Upwork, or a consulting firm?</summary>
-                    <div class="faq-content">Unlike advisory networks, M-Expert's local experts and university partners
-                        directly manage and execute projects on the ground, delivering hands-on technical validation and
-                        implementation.</div>
-                </details>
-                <details>
-                    <summary>How long does a typical Living Lab validation take?</summary>
-                    <div class="faq-content">Validation periods vary by project complexity, but typically range from 3
-                        to 6 months to ensure comprehensive testing in local conditions.</div>
-                </details>
-                <details>
-                    <summary>What is the cost?</summary>
-                    <div class="faq-content">Costs are structured based on the specific scope of validation and local
-                        expert involvement. We provide transparent pricing models during our initial consultation.</div>
-                </details>
-                <details>
-                    <summary>Which ASEAN countries are covered?</summary>
-                    <div class="faq-content">We currently focus on major markets including Vietnam, Thailand, Indonesia,
-                        and the Philippines, with expanding networks across the entire ASEAN region.</div>
-                </details>
-                <details>
-                    <summary>How are local experts vetted?</summary>
-                    <div class="faq-content">Our local experts are rigorously selected from top ASEAN universities,
-                        research institutions, and industry leaders with proven track records in technical execution and
-                        project management.</div>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="rolai-footer" style="padding: 60px 0 20px; border-top: 1px solid rgba(46, 91, 255, 0.1);">
-        <div class="rolai-container" style="text-align: center;">
-            <div class="logo" style="justify-content: center; margin-bottom: 24px;">
-                <img src="Media/Mexpertlogo.png" alt="M-Expert Logo"
-                    style="height: 48px; width: auto; object-fit: contain;">
-            </div>
-            <p style="color: var(--rolai-text-body); margin-bottom: 40px;">ASEAN Business, Now Powered by Trust as a
-                Service.</p>
-            <div class="footer-bottom"
-                style="color: #64748b; font-size: 0.875rem; border-top: 1px solid rgba(46, 91, 255, 0.1); padding-top: 20px;">
-                &copy; 2026 M-Expert. All rights reserved.
+            <p data-en="ASEAN Business, Now Powered by Trust as a Service."
+                data-vi="Kinh doanh ASEAN, Nay được vận hành bởi Dịch vụ Niềm tin.">ASEAN Business, Now Powered by Trust
+                as a Service.</p>
+            <div class="footer-bottom">
+                &copy; 2026 M-Expert. <span data-en="All rights reserved." data-vi="Bảo lưu mọi quyền.">All rights
+                    reserved.</span>
             </div>
         </div>
     </footer>
